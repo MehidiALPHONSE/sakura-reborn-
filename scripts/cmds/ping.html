@@ -1,0 +1,16 @@
+module.exports = {
+  config: {
+    name: 'ping',
+    version: '1.0',
+    author: 'Cruizex',
+    category: 'utility',
+    shortDescription: 'Ping command.',
+    longDescription: 'Usage: -ping',
+  },
+
+  onStart: async function ({ api, event }) {
+    if (event.body.toLowerCase() === '-ping') {
+      api.sendMessage('Pong!😗Im too lazy to check it and numbers make my head hurt🤧', event.threadID, event.messageID);
+    }
+  },
+};

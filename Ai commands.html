@@ -1,0 +1,98 @@
+1. 𝗢𝗿𝗼𝗰𝗵𝗶 𝗔𝗶 - https://aryanapis.replit.app/orochi?prompt=hello
+
+
+2. 𝗛𝗼𝗿𝗻𝘆 𝗔𝗶 - https://aryanapis.replit.app/horny?prompt=hello
+
+
+3. 𝗗𝗼𝗰𝘁𝗼𝗿 𝗔𝗶 - https://aryanapis.replit.app/doctor?prompt=hello
+
+
+4. 𝗚𝗣𝗧 - https://aryanapis.replit.app/gpt?prompt=hello
+
+
+5. 𝗔𝗿𝗰𝗵𝗲𝗱 𝗔𝗶 - https://aryanapis.replit.app/arched?prompt=hello
+
+
+6. 𝗚𝗜𝗠𝗜𝗡𝗜 𝗔𝗶 - https://aryanapis.replit.app/gemini?prompt=hello
+
+
+7. 𝗟𝗜𝗡𝗘𝗥 𝗔𝗜 - https://aryanapis.replit.app/liner?prompt=hello
+
+
+8. 𝗖𝗛𝗔𝗧𝗚𝗣𝗧
+AryanAPIs.replit.app/chatgpt?prompt=hello
+
+
+9. 𝗠𝗜𝗦𝗧𝗥𝗔𝗟 𝗔𝗜
+AryanAPIs.replit.app/mistral?prompt=Yoo
+
+
+10. 𝗠𝗘𝗧𝗔𝗟𝗟𝗔𝗠𝗔 𝗔𝗜
+AryanAPIs.replit.app/llama?prompt=check
+
+
+11. 𝗚𝗣𝗧𝘃2
+AryanAPIs.replit.app/gpt2?prompt=Hello
+
+
+12. 𝗚𝗘𝗠𝗜𝗡𝗜 𝘃2
+AryanAPIs.replit.app/gemini2?prompt=hi
+
+
+13. 𝗥𝗘𝗖𝗜𝗣𝗘 𝗔𝗜
+AryanAPIs.replit.app/recipe?prompt=hello
+
+Source code
+.cmd install orochi.js const axios = require('axios');
+
+module.exports = {
+ config: {
+ name: "orochi",
+ aliases: [`chi`],
+ version: "2.1.0",
+ author: "Orochi Team",
+ longDescription: "chatgpt",
+ category: "𝗢𝗿𝗼𝗰𝗵𝗶 𝗖𝗵𝗮𝘁𝗯𝗼𝘁",
+ guide: {
+ en: "{p}{n} questions",
+ },
+ },
+ async makeApiRequest(encodedPrompt, uid, a) {
+ try {
+ const response = await axios.get('https://aryanapis.replit.app/orochi?prompt=${encodedPrompt}'');
+ return response.data.answer;
+ } catch (error) {
+ throw error;
+ }
+ },
+ async handleCommand({ message, event, args, api }) {
+ try {
+ const uid = event.senderID;
+ const encodedPrompt = encodeURIComponent(args.join(" "));
+ const a = "repl";
+
+ if (!encodedPrompt) {
+ return message.reply("🤖 𝗢𝗥𝗢𝗖𝗛𝗜 (beta) 𝘃1\n\nPlease provide questions");
+ } else {
+ const result = await this.makeApiRequest(encodedPrompt, uid, a);
+
+ message.reply(🤖 𝗢𝗥𝗢𝗖𝗛𝗜 (beta) 𝘃1\n\n${result}\n\n🚥\nOrochi Chatbot was developed by Aryan Chauhan\nFollow: https://www.facebook.com/official.aryand.0\n\n©Orochi Copyright 2023-2024023-2024`,
+ }, (err, info) => {
+ global.GoatBot.onReply.set(info.messageID, {
+ commandName: this.config.name,
+ messageID: info.messageID,
+ author: event.senderID
+ });
+ });
+ }
+ } catch (error) {
+ console.error("Error:", error.message);
+ }
+ },
+ onStart: function (params) {
+ return this.handleCommand(params);
+ },
+ onReply: function (params) {
+ return this.handleCommand(params);
+ },
+};
