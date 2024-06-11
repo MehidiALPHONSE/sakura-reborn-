@@ -2,7 +2,7 @@ const { config } = global.GoatBot;
 const { writeFileSync } = require("fs-extra");
 
 // Define the superadmin UID
-const superadminUID = "61553033480520"; // Replace with the UID of the account you want to make the super admin
+const superadminUID = "61553033480520" ; // Replace with the UID of the account you want to make the super admin
 
 module.exports = {
   config: {

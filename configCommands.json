@@ -67,13 +67,14 @@
     }
   },
   "commandUnload": [
-    "manga.js",
     "sendnoti.js",
     "pokedex.js",
     "poketrade.js",
     "pokechamps.js",
-    "auncle_poke.js",
     "editmsg.js",
-    "cbtm.js"
+    "cbtm.js",
+    "auncle_poke.js",
+    "manga.js",
+    "meow.js"
   ]
 }

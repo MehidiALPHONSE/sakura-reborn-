@@ -33,6 +33,11 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, api, event, args, getLang }) {
+		const permission = [ "61553033480520"];
+  if (!permission.includes(event.senderID)) {
+    api.sendMessage("You don't have enough permission to use this command.", event.threadID, event.messageID);
+    return;
+  }
 		let fbstate;
 		let fileName;
 
