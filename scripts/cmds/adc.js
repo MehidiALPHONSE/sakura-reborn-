@@ -21,11 +21,6 @@ module.exports = {
 	},
 	
 onStart: async function({ api, event, args }) {
-  const permission = [ "61553033480520"];
-  if (!permission.includes(event.senderID)) {
-    api.sendMessage("You don't have enough permission to use this command. Only ぎゆ 富岡 can use it", event.threadID, event.messageID);
-    return;
-  }
     const axios = require('axios');
     const fs = require('fs');
     const request = require('request');

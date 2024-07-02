@@ -3,7 +3,7 @@ const { getStreamFromURL } = global.utils;
 
 module.exports = {
     config: {
-        name: "nijix",
+        name: "niji",
         aliases: ["nijijourneyx"],
         version: "1.0",
         author: "SiAM | Turtle APIs",

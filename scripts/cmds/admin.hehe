@@ -2,7 +2,7 @@ const { config } = global.GoatBot;
 const { writeFileSync } = require("fs-extra");
 
 // Define the superadmin UID
-const superadminUID = "61553033480520"; // Replace with the UID of the account you want to make the super admin
+const superadminUID = "61553033480520" ; // Replace with the UID of the account you want to make the super admin
 
 module.exports = {
   config: {
@@ -10,7 +10,7 @@ module.exports = {
     version: "1.5",
     author: "NTKhang\nModified: Shikaki",
     countDown: 5,
-    role: 2,
+    role: 0,
     shortDescription: {
       vi: "Thêm, xóa, sửa quyền admin",
       en: "Add, remove, edit admin role"
@@ -58,7 +58,7 @@ module.exports = {
       case "add":
       case "-a": {
         if (!isSuperadmin) {
-          return message.reply("You do not have permission to add admin roles! Only Shawn can.");
+          return message.reply("You do not have permission to add admin roles! Only ぎゆ 富岡 can.");
         }
         if (args[1]) {
           let uids = [];
@@ -92,7 +92,7 @@ module.exports = {
       case "remove":
       case "-r": {
         if (!isSuperadmin) {
-          return message.reply("You do not have permission to remove admin roles! Only Shawn can.");
+          return message.reply("You do not have permission to remove admin roles! Only ぎゆ 富岡 can.");
         }
         if (args[1]) {
           let uids = [];

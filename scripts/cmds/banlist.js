@@ -2,7 +2,6 @@ module.exports.config = {
     name: "bannedlist",
     aliases: ["banlist"],
     version: "1.0.1",
-  aliases: ["banned"],
     author: {
         name: "NTKhang",
         contacts: ""

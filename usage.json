@@ -1,19 +1,19 @@
 [
   {
     "name": "sing",
-    "usage": 269
+    "usage": 270
   },
   {
     "name": "bank",
-    "usage": 203
+    "usage": 206
   },
   {
     "name": "gemini",
-    "usage": 180
+    "usage": 181
   },
   {
     "name": "help",
-    "usage": 118
+    "usage": 122
   },
   {
     "name": "slot",
@@ -21,7 +21,7 @@
   },
   {
     "name": "pin",
-    "usage": 92
+    "usage": 93
   },
   {
     "name": "quiz",
@@ -29,7 +29,7 @@
   },
   {
     "name": "shortcut",
-    "usage": 71
+    "usage": 72
   },
   {
     "name": "rank",
@@ -37,7 +37,7 @@
   },
   {
     "name": "aniquiz",
-    "usage": 60
+    "usage": 61
   },
   {
     "name": "daily",
@@ -53,7 +53,7 @@
   },
   {
     "name": "ytb",
-    "usage": 43
+    "usage": 44
   },
   {
     "name": "spam",
@@ -61,7 +61,7 @@
   },
   {
     "name": "admin",
-    "usage": 43
+    "usage": 44
   },
   {
     "name": "gpt",
@@ -153,11 +153,11 @@
   },
   {
     "name": "topexp",
-    "usage": 12
+    "usage": 13
   },
   {
     "name": "kick",
-    "usage": 10
+    "usage": 11
   },
   {
     "name": "antiout",
@@ -205,7 +205,7 @@
   },
   {
     "name": "pinterest",
-    "usage": 26
+    "usage": 28
   },
   {
     "name": "ttt",
@@ -233,7 +233,7 @@
   },
   {
     "name": "setname",
-    "usage": 6
+    "usage": 13
   },
   {
     "name": "slap",
@@ -261,7 +261,7 @@
   },
   {
     "name": "translate",
-    "usage": 5
+    "usage": 6
   },
   {
     "name": "uptime",
@@ -321,7 +321,7 @@
   },
   {
     "name": "say",
-    "usage": 19
+    "usage": 20
   },
   {
     "name": "filteruser",
@@ -533,7 +533,7 @@
   },
   {
     "name": "_-",
-    "usage": 2
+    "usage": 4
   },
   {
     "name": "how",
@@ -649,7 +649,7 @@
   },
   {
     "name": "insta",
-    "usage": 1
+    "usage": 2
   },
   {
     "name": "search",
@@ -701,7 +701,7 @@
   },
   {
     "name": "approve",
-    "usage": 1
+    "usage": 2
   },
   {
     "name": "_-)",
@@ -1037,6 +1037,10 @@
   },
   {
     "name": "character",
+    "usage": 1
+  },
+  {
+    "name": "prefix",
     "usage": 1
   }
 ]

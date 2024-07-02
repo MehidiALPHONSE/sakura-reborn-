@@ -3,7 +3,6 @@ module.exports = {
     name: "resetbalance",
     aliases: ["broke"],
     author: 'loufi libra',
-    aliases: ["resetbal"],
     role: 2,
     category: "owner",
     shortDescription: {

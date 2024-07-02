@@ -6,7 +6,7 @@ const globalData = {
 
 module.exports = {
   config: {
-    name: "pokespawn",
+    name: "pokemon",
     aliases: "",
     version: "1.2",
     author: "Shikaki\nPokemon data: Ausum",
