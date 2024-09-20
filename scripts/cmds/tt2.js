@@ -75,7 +75,7 @@ function resetGame(playerID) {
 module.exports = {
   config: {
     name: "tt2",
-    aliases: ["tt2"],
+    aliases: ["ttt2"],
     version: "1.0",
     author: "Kshitiz",
     category: "game",
