@@ -21,11 +21,15 @@ global.client.makeRankCard = makeRankCard;
 module.exports = {
 	config: {
 		name: "rank",
-		version: "1.7",
+		version: "1.6",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: {
+			vi: "Xem level của người dùng",
+			en: "View level of user"
+		},
+		longDescription: {
 			vi: "Xem level của bạn hoặc người được tag. Có thể tag nhiều người",
 			en: "View your level or the level of the tagged person. You can tag many people"
 		},
@@ -76,12 +80,12 @@ module.exports = {
 const defaultDesignCard = {
 	widthCard: 2000,
 	heightCard: 500,
-	main_color: "#474747",
+	main_color: "https://i.postimg.cc/prp0MTjw/Picsart-23-07-27-21-21-09-272.png",
 	sub_color: "rgba(255, 255, 255, 0.5)",
-	alpha_subcard: 0.9,
-	exp_color: "#e1e1e1",
+	alpha_subcard: 0,
+	exp_color: "#03e8fc",
 	expNextLevel_color: "#3f3f3f",
-	text_color: "#000000"
+	text_color: "#ffffff"
 };
 
 async function makeRankCard(userID, usersData, threadsData, threadID, deltaNext, api = global.GoatBot.fcaApi) {
