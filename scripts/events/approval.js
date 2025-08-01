@@ -1,19 +1,18 @@
 const fs = require('fs');
-const { getStreamFromURL } = global.utils;
 
 module.exports = {
   config: {
     name: "approval",
     version: "1.3",
     author: "Arfan",
+    category: "developer",
     shortDescription: {
-      en: "Leave groups without approval (manual threads.json)"
-    },
-    category: "developer"
+      en: "Leave unapproved groups (checks threads.json)"
+    }
   },
 
   onStart: async function ({ api, event }) {
-    const masterUID = "100004252636599"; // আপনার মাস্টার ID
+    const masterUID = "100004252636599"; // তোমার মাস্টার আইডি
     const groupId = event.threadID;
 
     if (event.logMessageType !== "log:subscribe") return;
@@ -27,18 +26,19 @@ module.exports = {
     }
 
     if (!threads.includes(groupId)) {
-      const groupName = groupId; // যদি নাম না লাগে, নামও নিতে পারো api দিয়ে
-
+      // Unapproved group এড করলে মেসেজ পাঠাবে
       await api.sendMessage({
-        body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - https://m.me/j/AbZd6HddcyXHEFki/\nPlease join support GC for approval.`,
-        attachment: await getStreamFromURL("https://i.imgur.com/UQcCpOd.jpg")
+        body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - https://m.me/j/AbZd6HddcyXHEFki/\nPlease join the support group for approval.`
       }, groupId);
 
-      // ২০ সেকেন্ড অপেক্ষা
+      // ২০ সেকেন্ড অপেক্ষা করবে তারপর মাস্টারকে জানাবে এবং বট গ্রুপ থেকে বের হয়ে যাবে
       await new Promise(r => setTimeout(r, 20000));
 
+      const threadData = await api.getThreadInfo(groupId);
+      const groupName = threadData.threadName;
+
       await api.sendMessage(
-        `✅ | Unapproved group tried to add bot\n🆔 | TID: ${groupId}\n\n☣️ | Please approve if needed.`,
+        `✅ | Unapproved group tried to add bot\n🆔 | TID: ${groupId}\n🍁 | Name: ${groupName}\n\n☣️ | Please approve if needed.`,
         masterUID
       );
 
