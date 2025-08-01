@@ -4,48 +4,46 @@ const { getStreamFromURL } = global.utils;
 module.exports = {
   config: {
     name: "approval",
-    version: "1.2",
-    author: "rulex/Loufi",
+    version: "1.3",
+    author: "Arfan",
     shortDescription: {
-      en: "approval mode by loufi",
-      vi: "Rời khỏi tất cả các nhóm trừ những nhóm được liệt kê trong threads.json"
-    },
-    longDescription: {
-      en: "Leaves all groups except those in threads.json and sends a message to the owner of the bot",
-      vi: "Rời khỏi tất cả các nhóm trừ những nhóm được liệt kê trong threads.json và gửi một tin nhắn cho chủ sở hữu của thread ID 4"
+      en: "Leave groups without approval (manual threads.json)"
     },
     category: "developer"
   },
-  onStart: async function ({ api, event, threadsData, message }) {
-    const uid = "100004252636599";
 
+  onStart: async function ({ api, event }) {
+    const masterUID = "100004252636599"; // আপনার মাস্টার ID
     const groupId = event.threadID;
-    const threadData = await threadsData.get(groupId);
-    const name = threadData.threadName;
+
+    if (event.logMessageType !== "log:subscribe") return;
 
     let threads = [];
     try {
       threads = JSON.parse(fs.readFileSync('threads.json'));
-    } catch (err) {
-      console.error('', err);
+    } catch (e) {
+      console.error("Failed to load threads.json:", e);
+      return;
     }
 
-    if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
-      await message.send({
-        body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - https://m.me/j/AbZd6HddcyXHEFki/\nor type -supportgc within 20 second ⏳\nJoin Support GC To Get Approval To Use Sakura!\n\n- ArchitectDevs`,
+    if (!threads.includes(groupId)) {
+      const groupName = groupId; // যদি নাম না লাগে, নামও নিতে পারো api দিয়ে
+
+      await api.sendMessage({
+        body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - https://m.me/j/AbZd6HddcyXHEFki/\nPlease join support GC for approval.`,
         attachment: await getStreamFromURL("https://i.imgur.com/UQcCpOd.jpg")
-      });
-    }
+      }, groupId);
 
-    if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
-      await new Promise((resolve) => setTimeout(resolve, 20000)); // Delay of 1 seconds
+      // ২০ সেকেন্ড অপেক্ষা
+      await new Promise(r => setTimeout(r, 20000));
+
       await api.sendMessage(
-        `✅ | This group needs approval\n🆔 | TID: ${groupId}\n🍁 | TName: ${name}\n\n☣️ | Master Approve it when you see..`,
-        uid,
-        async () => {
-          await api.removeUserFromGroup(api.getCurrentUserID(), groupId);
-        }
+        `✅ | Unapproved group tried to add bot\n🆔 | TID: ${groupId}\n\n☣️ | Please approve if needed.`,
+        masterUID
       );
+
+      const botID = api.getCurrentUserID();
+      await api.removeUserFromGroup(botID, groupId);
     }
   }
 };
