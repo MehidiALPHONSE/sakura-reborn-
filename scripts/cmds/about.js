@@ -5,7 +5,7 @@ module.exports = {
   config: {
     name: "about",
     version: "1.0",
-    author: "Mahim",
+    author: "Arfan",
     countDown: 60,
     role: 0,
     shortDescription: {
@@ -28,8 +28,8 @@ module.exports = {
     const botPrefix = "-";
     const authorName = "Arfan";
     const teamName = "ArchitectDevs";
-    const authorFB = "https://www.facebook.com/MehidiHassanMahimOfficial";
-    const authorInsta = "secrate";
+    const authorFB = "https://www.facebook.com/homophobicmahim";
+    const authorInsta = "";
 
     const urls = JSON.parse(fs.readFileSync('info.json'));
     const link = urls[Math.floor(Math.random() * urls.length)];
