@@ -3,127 +3,217 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ 🐐 | GoatBot V2 ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "         [🐐 | SAKURA~]\n      ";
+const characters = "━━━━━━━━━━━━━━━";
+/** 
+* @author NTKhang
+* @author: do not delete it
+* @message if you delete or edit it you will get a global ban
+*/
 
 module.exports = {
-  config: {
-    name: "help",
-    version: "1.17",
-    author: "NTKhang", // original author Kshitiz 
-    countDown: 5,
-    role: 0,
-    shortDescription: {
-      en: "View command usage and list all commands directly",
-    },
-    longDescription: {
-      en: "View command usage and list all commands directly",
-    },
-    category: "info",
-    guide: {
-      en: "{pn} / help cmdName ",
-    },
-    priority: 1,
-  },
+	config: {
+		name: "help",
+		version: "1.9",
+		author: "NTKhang",
+		countDown: 5,
+		role: 0,
+		shortDescription: {
+			vi: "Xem cách dùng lệnh",
+			en: "View command usage"
+		},
+		longDescription: {
+			vi: "Xem cách sử dụng của các lệnh",
+			en: "View command usage"
+		},
+		category: "info",
+		guide: {
+			vi: "{pn} [để trống | <số trang> | <tên lệnh>]",
+			en: "{pn} [empty | <page number> | <command name>]"
+		},
+		priority: 1
+	},
 
-  onStart: async function ({ message, args, event, threadsData, role }) {
-    const { threadID } = event;
-    const threadData = await threadsData.get(threadID);
-    const prefix = getPrefix(threadID);
+	langs: {
+		vi: {
+			help: "%1\n%2\n%1\nTrang [ %3/%4 ]\nHiện tại bot có %5 lệnh có thể sử dụng\n» Gõ %6help <page> để xem danh sách lệnh\n» Gõ %6help để xem chi tiết cách sử dụng lệnh đó\n%1\n%7",
+			help2: "%1%2\n» Hiện tại bot có %3 lệnh có thể sử dụng, gõ %4help <tên lệnh> để xem chi tiết cách sử dụng lệnh đó\n%2\n%5",
+			commandNotFound: "Lệnh \"%1\" không tồn tại",
+			getInfoCommand: "%1\n» Mô tả: %2\n» Các tên gọi khác: %3\n» Các tên gọi khác trong nhóm bạn: %4\n» Version: %5\n» Role: %6\n» Thời gian mỗi lần dùng lệnh: %7s\n» Author: %8\n» Hướng dẫn sử dụng:\n%9\n» Chú thích:\n• Nội dung bên trong <XXXXX> là có thể thay đổi\n• Nội dung bên trong [a|b|c] là a hoặc b hoặc c",
+			doNotHave: "Không có",
+			roleText0: "0 (Tất cả người dùng)",
+			roleText1: "1 (Quản trị viên nhóm)",
+			roleText2: "2 (Admin bot)",
+			roleText0setRole: "0 (set role, tất cả người dùng)",
+			roleText1setRole: "1 (set role, quản trị viên nhóm)",
+			pageNotFound: "Trang %1 không tồn tại"
+		},
+		en: {
+			help: "╔═══════════╗\n   [ ᴀʀᴄʜɪᴛᴇᴄᴛᴅᴇᴠs]\n╚═══════════╝\n┌───⭓GAMES \n│⭔ttt⭔ttt2⭔rps⭔guess \n│⭔dhbc⭔country \n│⭔slot⭔tod⭔dice\n│⭔quiz⭔wordgame \n└───────────⧕ \n┌───⭓ AI CHATBOTS \n│⭔dsk⭔imagine \n |⭔bard⭔gpt⭔pxart \n│⭔animefy⭔openjourney  \n│⭔art   \n└───────────⧕ \n┌───⭓ GFXs \n│⭔gfx ⭔gfx2  \n└───────────⧕ \n┌───⭓ ANIME \n│⭔animeinfo⭔anigif\n | ⭔anigirl⭔anivid\n└───────────⧕  \n┌───⭓BOX CHAT \n│⭔adduser ⭔admin ⭔all \n│⭔antichangeinfobox \n│⭔autosetname ⭔badwords \n│⭔ban ⭔busy ⭔count \n│⭔filteruser ⭔gay \n│⭔group ⭔groupimg \n│⭔groupinfo ⭔groupname \n│⭔kick ⭔msg \n│⭔onlyadminbox ⭔qrscan \n│⭔refresh ⭔rules ⭔sendnoti \n│⭔setname ⭔unsend ⭔warn\n└───────────⧕ \n┌───⭓ CONFIG \n│⭔prefix ⭔setalias ⭔restart \n└───────────⧕ \n┌───⭓ CONTACTS ADMIN \n│⭔callad ⭔report \n└───────────⧕ \n┌───⭓ CUSTOM \n│⭔setleave ⭔setwelcome\n│⭔shortcut \n└───────────⧕ \n┌───⭓ ENTERTAINMENT \n│⭔fakechat ⭔buttslap ⭔hell \n |⭔marry ⭔clown ⭔hug \n│⭔say ⭔batslap ⭔kiss ⭔balls \n |⭔balance ⭔bank\n│⭔avoid ⭔emojimix ⭔trigger \n |⭔jail ⭔jonny ⭔trump    \n |⭔phub  \n | ⭔pair ⭔propose\n |⭔toilet ⭔balls ⭔hack\n |⭔messi ⭔njr ⭔ramos \n└───────────⧕ \n┌───⭓AVT & BANNERS \n│⭔anonymous ⭔aov \n│⭔avatar \n│⭔banner ⭔banner2 \n│⭔cover ⭔cover2\n│⭔cover3⭔cover4 \n└───────────⧕ \n┌───⭓ IMAGE \n│⭔avatar⭔cover \n│⭔moon⭔pin⭔catsay \n│⭔profile ⭔trigger ⭔moqqa \n |⭔image ⭔cdp ⭔imgur\n└───────────⧕ \n┌───⭓ INFO \n│⭔help ⭔setrole ⭔uid \n│⭔tid \n└───────────⧕ \n┌───⭓ MEDIA \n│⭔insta ⭔clips ⭔tiksr⭔video \n│⭔fb ⭔ytb ⭔V2a \n |⭔transcribe   ⭔lyrics⭔movieinfo \n |⭔salahtime⭔ss⭔profile⭔sing \n└───────────⧕ \n┌───⭓ BOT OWNER \n│⭔hubble ⭔setlang ⭔outall\n│⭔thread ⭔cmd ⭔bio \n│⭔pm ⭔admin ⭔event ⭔noti \n│⭔superadmin ⭔shorthelp \n│⭔update ⭔user ⭔uptime \n│⭔resfresh ⭔setrankup\n│⭔fs ⭔autogreet\n└───────────⧕ \n┌───⭓ RANK \n│⭔customrankcard ⭔rank \n│⭔rankup \n└───────────⧕ \n┌───⭓ USELESS \n│⭔jsontomongodb\n│⭔jsontosqlite \n│⭔eval ⭔loadconfig\n│⭔ignoreonlyad \n└───────────⧕ \n┌───⭓ UTILITY \n│⭔trans ⭔weather \n└───────────⧕ \n┌───⭓ WIKI \n│⭔emojimean ⭔wiki |⭔google \n└───────────⧕\n\n『This bot has %5』\n『Type %6help(cmd)for details』\n\n%1\n%7",
+			help2: "%1%2\n» Currently, the bot has %3 commands that can be used, type %4help <command name> to view the details of how to use that command\n%2\n%5",
+			commandNotFound: "Command \"%1\" does not exist",
+			getInfoCommand: "%1\n» Description: %2\n» Other names: %3\n» Other names in your group: %4\n» Version: %5\n» Role: %6\n» Time per command: %7s\n» Author: %8\n» Usage guide:\n%9\n» Notes:\n• The content inside <XXXXX> can be changed\n• The content inside [a|b|c] is a or b or c",
+			doNotHave: "Do not have",
+			roleText0: "0 (All users)",
+			roleText1: "1 (Group administrators)",
+			roleText2: "2 (Admin bot)",
+			roleText0setRole: "0 (set role, all users)",
+			roleText1setRole: "1 (set role, group administrators)",
+			pageNotFound: "Page %1 does not exist"
+		}
+	},
 
-    if (args.length === 0) {
-      const categories = {};
-      let msg = "";
+	onStart: async function ({ message, args, event, threadsData, getLang, role }) {
+		const langCode = await threadsData.get(event.threadID, "data.lang") || global.GoatBot.config.language;
+		let customLang = {};
+		const pathCustomLang = path.join(__dirname, "..", "..", "languages", "cmds", `${langCode}.js`);
+		if (fs.existsSync(pathCustomLang))
+			customLang = require(pathCustomLang);
+		const { threadID } = event;
+		const threadData = await threadsData.get(threadID);
+		const prefix = getPrefix(threadID);
+		let sortHelp = threadData.settings.sortHelp || "name";
+		if (!["category", "name"].includes(sortHelp))
+			sortHelp = "name";
+		const commandName = (args[0] || "").toLowerCase();
+		const command = commands.get(commandName) || commands.get(aliases.get(commandName));
+		// ———————————————— LIST ALL COMMAND ——————————————— //
+		if (!command && !args[0] || !isNaN(args[0])) {
+			const arrayInfo = [];
+			let msg = "";
+			if (sortHelp == "name") {
+				const page = parseInt(args[0]) || 1;
+				const numberOfOnePage = 30;
+				for (const [name, value] of commands) {
+					if (value.config.role > 1 && role < value.config.role)
+						continue;
+					let describe = name;
+					let shortDescription;
+					const shortDescriptionCustomLang = customLang[name]?.shortDescription;
+					if (shortDescriptionCustomLang != undefined)
+						shortDescription = checkLangObject(shortDescriptionCustomLang, langCode);
+					else if (value.config.shortDescription)
+						shortDescription = checkLangObject(value.config.shortDescription, langCode);
+					if (shortDescription && shortDescription.length < 40)
+						describe += `: ${shortDescription.charAt(0).toUpperCase() + shortDescription.slice(1)}`;
+					arrayInfo.push({
+						data: describe,
+						priority: value.priority || 0
+					});
+				}
+				arrayInfo.sort((a, b) => a.data - b.data);
+				arrayInfo.sort((a, b) => a.priority > b.priority ? -1 : 1);
+				const { allPage, totalPage } = global.utils.splitPage(arrayInfo, numberOfOnePage);
+				if (page < 1 || page > totalPage)
+					return message.reply(getLang("pageNotFound", page));
+				const returnArray = allPage[page - 1];
+				const startNumber = (page - 1) * numberOfOnePage + 1;
+				msg += (returnArray || []).reduce((text, item, index) => text += `${index + startNumber}/ ${item.data}\n`, '');
+				await message.reply(getLang("help", characters, msg, page, totalPage, commands.size, prefix, doNotDelete));
+			}
+			else if (sortHelp == "category") {
+				for (const [, value] of commands) {
+					if (value.config.role > 1 && role < value.config.role)
+						continue;
+					if (arrayInfo.some(item => item.category == value.config.category.toLowerCase())) {
+						const index = arrayInfo.findIndex(item => item.category == value.config.category.toLowerCase());
+						arrayInfo[index].names.push(value.config.name);
+					}
+					else
+						arrayInfo.push({
+							category: value.config.category.toLowerCase(),
+							names: [value.config.name]
+						});
+				}
+				arrayInfo.sort((a, b) => (a.category < b.category ? -1 : 1));
+				for (const data of arrayInfo) {
+					const categoryUpcase = `━━━ ${data.category.toUpperCase()} ━━━`;
+					data.names.sort();
+					msg += `${categoryUpcase}\n${data.names.join(", ")}\n\n`;
+				}
+				message.reply(getLang("help2", msg, characters, commands.size, prefix, doNotDelete));
+			}
+		}
+		// ———————————— COMMAND DOES NOT EXIST ———————————— //
+		else if (!command && args[0]) {
+			return message.reply(getLang("commandNotFound", args[0]));
+		}
+		// ————————————————— INFO COMMAND ————————————————— //
+		else {
+			const configCommand = command.config;
+			const author = configCommand.author;
 
-      msg += `╔═══════════╗\n   𝗖𝗥𝗜𝗡𝗚𝗘𝗟𝗢𝗥𝗗😎   \n╚═══════════╝`; // replace with your name 
+			const nameUpperCase = configCommand.name.toUpperCase();
+			const title = `${characters}\n${nameUpperCase}\n${characters}`;
 
-      for (const [name, value] of commands) {
-        if (value.config.role > 1 && role < value.config.role) continue;
+			const descriptionCustomLang = customLang[configCommand.name]?.longDescription;
+			let description;
+			if (descriptionCustomLang != undefined)
+				description = checkLangObject(descriptionCustomLang, langCode);
+			else if (configCommand.longDescription)
+				description = checkLangObject(configCommand.longDescription, langCode);
+			const aliasesString = configCommand.aliases ? configCommand.aliases.join(", ") : getLang("doNotHave");
+			const aliasesThisGroup = threadData.data.aliases ? (threadData.data.aliases[configCommand.name] || []).join(", ") : getLang("doNotHave");
+			let roleOfCommand = configCommand.role;
+			let roleIsSet = false;
+			if (threadData.data.setRole?.[configCommand.name]) {
+				roleOfCommand = threadData.data.setRole[configCommand.name];
+				roleIsSet = true;
+			}
 
-        const category = value.config.category || "Uncategorized";
-        categories[category] = categories[category] || { commands: [] };
-        categories[category].commands.push(name);
-      }
+			const roleText = roleOfCommand == 0 ?
+				(roleIsSet ? getLang("roleText0setRole") : getLang("roleText0")) :
+				roleOfCommand == 1 ?
+					(roleIsSet ? getLang("roleText1setRole") : getLang("roleText1")) :
+					getLang("roleText2");
 
-      Object.keys(categories).forEach((category) => {
-        if (category !== "info") {
-          msg += `\n╭───────────𒁍\n│ 『  ${category.toUpperCase()}  』`;
+			let guide;
+			if (customLang[configCommand.name]?.guide != undefined)
+				guide = customLang[configCommand.name].guide;
+			else
+				guide = configCommand.guide[langCode] || configCommand.guide["en"];
+			guide = guide || {
+				body: ""
+			};
+			if (typeof guide == "string")
+				guide = { body: guide };
+			const guideBody = guide.body
+				.replace(/\{prefix\}|\{p\}/g, prefix)
+				.replace(/\{name\}|\{n\}/g, configCommand.name)
+				.replace(/\{pn\}/g, prefix + configCommand.name);
 
+			const formSendMessage = {
+				body: getLang("getInfoCommand", title, description, aliasesString, aliasesThisGroup, configCommand.version, roleText, configCommand.countDown || 1, author || "", guideBody)
+			};
 
-          const names = categories[category].commands.sort();
-          for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 3).map((item) => `✰${item}`);
-            msg += `\n│ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
-          }
-
-          msg += `\n╰────────────`;
-        }
-      });
-
-      const totalCommands = commands.size;
-      msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 ${totalCommands} 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘁𝗵𝗮𝘁 𝗰𝗮𝗻 𝗯𝗲 𝘂𝘀𝗲𝗱\n`;
-      msg += `𝗧𝘆𝗽𝗲 ${prefix} 𝗵𝗲𝗹𝗽 𝗰𝗺𝗱𝗡𝗮𝗺𝗲 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n`;
-      msg += `𝗖𝗥𝗜𝗡𝗚𝗘𝗟𝗢𝗥𝗗😎`; // its not decoy so change it if you want 
-
-      const helpListImages = [
-        "https://i.imgur.com/tPbhcot.png", // add image link here
-        "https://i.imgur.com/5JSRhJp.png",
-        // Add more image links as needed
-      ];
-
-      const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
-
-      await message.reply({
-        body: msg,
-        attachment: await global.utils.getStreamFromURL(helpListImage),
-      });
-    } else {
-      const commandName = args[0].toLowerCase();
-      const command = commands.get(commandName) || commands.get(aliases.get(commandName));
-
-      if (!command) {
-        await message.reply(`Command "${commandName}" not found.`);
-      } else {
-        const configCommand = command.config;
-        const roleText = roleTextToString(configCommand.role);
-        const author = configCommand.author || "Unknown";
-
-        const longDescription = configCommand.longDescription ? configCommand.longDescription.en || "No description" : "No description";
-
-        const guideBody = configCommand.guide?.en || "No guide available.";
-        const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
-
-        const response = `╭── NAME ────⭓
-  │ ${configCommand.name}
-  ├── INFO
-  │ Description: ${longDescription}
-  │ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
-  │ Other names in your group: Do not have
-  │ Version: ${configCommand.version || "1.0"}
-  │ Role: ${roleText}
-  │ Time per command: ${configCommand.countDown || 1}s
-  │ Author: ${author}
-  ├── Usage
-  │ ${usage}
-  ├── Notes
-  │ The content inside <XXXXX> can be changed
-  │ The content inside [a|b|c] is a or b or c
-  ╰━━━━━━━❖`;
-
-        await message.reply(response);
-      }
-    }
-  },
+			if (guide.attachment) {
+				if (typeof guide.attachment == "object") {
+					formSendMessage.attachment = [];
+					for (const pathFile in guide.attachment) {
+						if (!fs.existsSync(pathFile)) {
+							const cutFullPath = pathFile.split("/");
+							cutFullPath.pop();
+							for (let i = 0; i < cutFullPath.length; i++) {
+								const path = cutFullPath.slice(0, i + 1).join('/');
+								if (!fs.existsSync(path))
+									fs.mkdirSync(path);
+							}
+							const getFile = await axios.get(guide.attachment[pathFile], { responseType: 'arraybuffer' });
+							fs.writeFileSync(pathFile, Buffer.from(getFile.data));
+						}
+						formSendMessage.attachment.push(fs.createReadStream(pathFile));
+					}
+				}
+			}
+			return message.reply(formSendMessage);
+		}
+	}
 };
 
-function roleTextToString(roleText) {
-  switch (roleText) {
-    case 0:
-      return "0 (All users)";
-    case 1:
-      return "1 (Group administrators)";
-    case 2:
-      return "2 (Admin bot)";
-    default:
-      return "Unknown role";
-  }
-}
+function checkLangObject(data, langCode) {
+	if (typeof data == "string")
+		return data;
+	if (typeof data == "object" && !Array.isArray(data))
+		return data[langCode] || data.en || "";
+	return "";
+				}
