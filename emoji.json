@@ -1,0 +1,735 @@
+[
+  {
+    "emoji": "afghanistan,kabul,afghani",
+    "link": "https://i.postimg.cc/wMJd0qHq/800px-Flag-of-Afghanistan-2013-2021-svg.png"
+  },
+  {
+    "emoji": "albania,tirana,lek",
+    "link": "https://i.postimg.cc/xC1CxbF0/Flag-Albania.jpg"
+  },
+  {
+    "emoji": "algeria,algiers,dinar",
+    "link": "https://i.postimg.cc/QMvmcPkD/Flag-Algeria.jpg"
+  },
+  {
+    "emoji": "andorra,andorra la vella,euro",
+    "link": "https://i.postimg.cc/ZKJG9B5c/1024px-Flag-of-Andorra-svg.png"
+  },
+  {
+    "emoji": "angola,luanda,kwanza",
+    "link": "https://i.postimg.cc/B6Tq0rmQ/Flag-Angola.jpg"
+  },
+  {
+    "emoji": "antigua and barbuda,st. john's,eastern caribbean dollar",
+    "link": "https://i.postimg.cc/KjXhRJsp/800px-Flag-of-Antigua-and-Barbuda-svg.png"
+  },
+  {
+    "emoji": "argentina,buenos aires,argentine peso",
+    "link": "https://i.postimg.cc/4dHbW5Ng/argentina.png"
+  },
+  {
+    "emoji": "armenia,yerevan,armenian dram",
+    "link": "https://i.postimg.cc/rwXYgrYL/am-flag.jpg"
+  },
+  {
+    "emoji": "australia,canberra,australian dollar",
+    "link": "https://i.postimg.cc/28hfzmsr/1280px-Flag-of-Australia-svg.png"
+  },
+  {
+    "emoji": "austria,vienna,euro",
+    "link": "https://i.postimg.cc/HLsG4MVk/1125px-State-flag-of-Austria-1934-1938-svg.png"
+  },
+  {
+    "emoji": "azerbaijan,baku,azerbaijani manat",
+    "link": "https://i.postimg.cc/PqB4rssn/Flag-of-Azerbaijan.png"
+  },
+  {
+    "emoji": "bahamas,nassau,bahamian dollar",
+    "link": "https://i.postimg.cc/5tS6bQ7C/bs.png"
+  },
+  {
+    "emoji": "bahrain,manama,bahraini dinar",
+    "link": "https://i.postimg.cc/SRk0qjPJ/image.png"
+  },
+  {
+  "emoji": "bangladesh,dhaka,taka",
+  "link": "https://i.postimg.cc/BQszdcBc/800px-Flag-of-Bangladesh-svg.png"
+  },
+
+  {
+    "emoji": "barbados,bridgetown,barbadian dollar",
+    "link": "https://i.postimg.cc/GhfMxHjG/Flag-Barbados.jpg"
+  },
+  {
+    "emoji": "belarus,minsk,belarusian ruble",
+    "link": "https://i.postimg.cc/zvBjnrbx/Flag-Belarus.jpg"
+  },
+  {
+    "emoji": "belgium,brussels,euro",
+    "link": "https://i.postimg.cc/PxFZn8JM/2363px-Flag-of-Belgium-svg.png"
+  },
+  {
+    "emoji": "belize,belmopan,belize dollar",
+    "link": "https://i.postimg.cc/xd7nrKM5/Flag-Belize.jpg"
+  },
+  {
+    "emoji": "benin,porto-novo,cfa franc",
+    "link": "https://i.postimg.cc/dVVYLW9n/Flag-Benin.jpg"
+  },
+  {
+    "emoji": "bhutan,thimphu,bhutanese ngultrum",
+    "link": "https://i.postimg.cc/rsjHTk7T/1280px-Flag-of-Bhutan-svg.png"
+  },
+  {
+    "emoji": "bolivia,la paz, boliviano",
+    "link": "https://i.postimg.cc/76m1YZPK/Flag-Bolivia.jpg"
+  },
+  {
+    "emoji": "bosnia,sarajevo,convertible mark",
+    "link": "https://i.postimg.cc/ZK18qgZz/2560px-Flag-of-Bosnia-and-Herzegovina-svg.png"
+  },
+  {
+    "emoji": "botswana,gaborone,pula",
+    "link": "https://i.postimg.cc/25CBbNKM/1280px-Flag-of-Botswana-svg.png"
+  },
+  {
+    "emoji": "brazil,brasilia,brazilian real",
+    "link": "https://i.postimg.cc/cCtKyxvg/1024px-Flag-of-Brazil-svg.png"
+  },
+  {
+    "emoji": "brunei,bandar seri begawan,brunei dollar",
+    "link": "https://i.postimg.cc/VkWWHgQy/Flag-Brunei.jpg"
+  },
+  {
+    "emoji": "bulgaria,sofia,bulgarian lev",
+    "link": "https://i.postimg.cc/HxV0nCJH/1280px-Flag-of-Bulgaria-with-coat-of-arms-svg.png"                                    
+  },
+    {
+    "emoji": "burkina faso,ouagadougou,cfa franc",
+    "link": "https://i.postimg.cc/x1NSvXWb/2560px-Flag-of-Burkina-Faso-svg.png"
+  },
+  {
+    "emoji": "burundi,bujumbura,burundi franc",
+    "link": "https://i.postimg.cc/BnKd8dKT/flag-of-Burundi-scaled.jpg"
+  },
+  {
+    "emoji": "cabo verde,praia,cape verdean escudo",
+    "link": "https://i.postimg.cc/YqJPwbsh/Flag-Cabo-Verde.jpg"
+  },
+  {
+    "emoji": "cambodia,phnom penh,cambodian riel",
+    "link": "https://i.postimg.cc/zBB7hgcs/national-flag-of-kingdom-cambodia-free-vector.jpg"
+  },
+  {
+    "emoji": "cameroon,yaounde,cfa franc",
+    "link": "https://i.postimg.cc/yWqy2r8K/Flag-Cameroon.jpg"
+  },
+  {
+    "emoji": "canada,ottawa,canadian dollar",
+    "link": "https://i.postimg.cc/Ss3PNdxT/Flag-Canada.jpg"
+  },
+  {
+    "emoji": "central african republic,bangui,cfa franc",
+    "link": "https://i.postimg.cc/SsC6CfGt/1200px-Flag-of-the-Central-African-Republic.png"
+  },
+  {
+    "emoji": "chad,n'djamena,cfa franc",
+    "link": "https://i.postimg.cc/3wK5Ptk2/Flag-Chad.jpg"
+  },
+  {
+    "emoji": "chile,santiago,chilean peso",
+    "link": "https://i.postimg.cc/HsXLmPkN/2560px-Flag-of-Chile-svg.png"
+  },
+  {
+    "emoji": "china,beijing,chinese yuan",
+    "link": "https://i.postimg.cc/tJP9XYp6/Flag-China.jpg"
+  },
+  {
+    "emoji": "colombia,bogota,colombian peso",
+    "link": "https://i.postimg.cc/ZqRZWfJ4/2560px-Flag-of-Colombia-svg.png"
+  },
+  {
+    "emoji": "comoros,moroni,comorian franc",
+    "link": "https://i.postimg.cc/YC2BPXGY/Flag-Comoros.jpg"
+  },
+  {
+    "emoji": "congo, brazzaville,cfa franc",
+    "link": "https://i.postimg.cc/tgY3Bj9f/1024px-Flag-of-the-Democratic-Republic-of-the-Congo-svg.png"
+  },
+
+  {
+    "emoji": "costa rica,san jose,costa rican colon",
+    "link": "https://i.postimg.cc/y8NcNH3d/Flag-Costa-Rica.jpg"
+  },
+  {
+    "emoji": "cote d'ivoire,yamoussoukro,cfa franc",
+    "link": "https://i.postimg.cc/DZ1bNfHC/Flag-Cote-d-Ivoire.jpg"
+  },
+  {
+    "emoji": "croatia,zagreb,croatian kuna",
+    "link": "https://i.postimg.cc/ydhkPQ3t/2560px-Flag-of-Croatia-svg.png"
+  },
+  {
+    "emoji": "cuba,havana,cuban peso",
+    "link": "https://i.postimg.cc/qRGvnN9d/1280px-Flag-of-Cuba-svg.png"
+  },
+  {
+    "emoji": "cyprus,nicosia,euro",
+    "link": "https://i.postimg.cc/kG4qbfQx/2560px-Flag-of-Cyprus-svg.png"
+  },
+  {
+    "emoji": "czechia,prague,czech koruna",
+    "link": "https://i.postimg.cc/sxZHqWyk/2560px-Flag-of-the-Czech-Republic-svg.png"
+  },
+  {
+    "emoji": "denmark,copenhagen,danish krone",
+    "link": "https://i.postimg.cc/6QGYmYT0/dk-flag-01.png"
+  },
+  {
+    "emoji": "djibouti,djibouti,djiboutian franc",
+    "link": "https://i.postimg.cc/pdNDpxXf/2000px-Flag-of-Djibouti-svg.png"
+  },
+  {
+    "emoji": "dominica,roseau,east caribbean dollar",
+    "link": "https://i.postimg.cc/JtV1jTy2/dominica-flag-17864-1639690365-1280-1280.jpg"
+  },
+   {
+    "emoji": "dominican republic,santo domingo,dominican peso",
+    "link": "https://i.postimg.cc/0yCw2SFs/1200px-Flag-of-the-Dominican-Republic-svg.png"
+  },
+  {
+    "emoji": "east timor,dili,united states dollar",
+    "link": "https://i.postimg.cc/Ghx2kCQP/2560px-Flag-of-East-Timor-svg.png"
+  },
+  {
+    "emoji": "ecuador,quito,united states dollar",
+    "link": "https://i.postimg.cc/KjyGMq3s/2560px-Flag-of-Ecuador-svg.png"
+  },
+  {
+    "emoji": "egypt,cairo,egyptian pound",
+    "link": "https://i.postimg.cc/X74NNPbr/Flag-Egypt.jpg"
+  },
+  {
+    "emoji": "el salvador,san salvador,united states dollar",
+    "link": "https://i.postimg.cc/yY1BCSm9/Flag-El-Salvador.jpg"
+  },
+  {
+    "emoji": "equatorial guinea,malabo,cfa franc",
+    "link": "https://i.postimg.cc/y80ThWGQ/1200px-Flag-of-Equatorial-Guinea-svg.png"
+  },
+  {
+    "emoji": "eritrea,asmara,eritrean nakfa",
+    "link": "https://i.postimg.cc/Bvgcyk42/2560px-Flag-of-Eritrea-svg.png"
+  },
+  {
+    "emoji": "estonia,tallinn,euro",
+    "link": "https://i.postimg.cc/7hC35L7N/2560px-Flag-of-Estonia-svg.png"
+  },
+  {
+    "emoji": "eswatini,mbabane,swazi lilangeni",
+    "link": "https://i.postimg.cc/Xv7QV42s/sz-flag.jpg"
+  },
+  {
+    "emoji": "ethiopia,addis ababa,ethiopian birr",
+    "link": "https://i.postimg.cc/cLJnCCSt/Flag-Ethiopia.jpg"
+  },
+  {
+    "emoji": "fiji,suva,fijian dollar",
+    "link": "https://i.postimg.cc/7YRx1Zz2/Fiji-lgflag.gif"
+  },
+  {
+    "emoji": "finland,helsinki,euro",
+    "link": "https://i.postimg.cc/RV2B6br1/1200px-Flag-of-Finland-svg.png"
+  },
+  {
+    "emoji": "france,paris,euro",
+    "link": "https://i.postimg.cc/ZRYttG3m/1200px-Flag-of-France-svg.png"
+  },
+  {
+    "emoji": "gabon,libreville,cfa franc",
+    "link": "https://i.postimg.cc/YSpyh1Sf/image.png"
+  },
+  {
+    "emoji": "gambia,banjul,gambian dalasi",
+    "link": "https://i.postimg.cc/7LVdVKRW/image.png"
+  },
+  {
+    "emoji": "georgia,tbilisi,georgian lari",
+    "link": "https://i.postimg.cc/R0Z5jrwB/georgia-republic-flag-11456-1639690367.jpg"
+  },
+  {
+    "emoji": "germany,berlin,euro",
+    "link": "https://i.postimg.cc/D0stq73q/1200px-Flag-of-Germany-svg.png"
+  },
+  {
+    "emoji": "ghana,accra,ghanaian cedi",
+    "link": "https://i.postimg.cc/L6tc54TS/Flag-Ghana.jpg"
+  },
+  {
+    "emoji": "greece,athens,euro",
+    "link": "https://i.postimg.cc/gcR5tc1h/Flag-Greece.jpg"
+  },
+  {
+    "emoji": "grenada,st. george's,east caribbean dollar",
+    "link": "https://i.postimg.cc/pTj0Skcv/Grenada-National-Flag-Flag-362.gif"
+  },
+  {
+    "emoji": "guatemala,guatemala city,guatemalan quetzal",
+    "link": "https://i.postimg.cc/YqRdTvRv/Flag-Guatemala.jpg"
+  },
+  {
+    "emoji": "guinea,conakry,guinean franc",
+    "link": "https://i.postimg.cc/qRHcNrQf/1024px-Flag-of-Guinea-svg.png"
+  },
+  {
+    "emoji": "guinea-bissau,bissau,cfa franc",
+    "link": "https://i.postimg.cc/bwG1LrBc/2000px-Flag-of-Guinea-Bissau-svg.png"
+  },
+  {
+    "emoji": "guyana,georgetown,guyanese dollar",
+    "link": "https://i.postimg.cc/ZKmTVMsT/2560px-Flag-of-Guyana-svg.png"
+
+  },
+  {
+    "emoji": "honduras,tegucigalpa,honduran lempira",
+    "link": "https://i.postimg.cc/pLJZyHZ5/Flag-Honduras.jpg"
+  },
+  {
+    "emoji": "hungary,budapest,forint",
+    "link": "https://i.postimg.cc/gcLH8RsW/Flag-Hungary.jpg"
+  },
+  {
+    "emoji": "iceland,reykjavik,icelandic krona",
+    "link": "https://i.postimg.cc/qRPnjbwd/Flag-Iceland.jpg"
+  },
+  {
+    "emoji": "india,new delhi,indian rupee",
+    "link": "https://i.postimg.cc/8PBWmbrq/1200px-Flag-of-India-svg.png"
+  },
+  {
+    "emoji": "indonesia,jakarta,indonesian rupiah",
+    "link": "https://i.postimg.cc/0QwKMGsX/Flag-Indonesia.jpg"
+  },
+  {
+    "emoji": "iran,tehran,iranian rial",
+    "link": "https://i.postimg.cc/Pxsr7BgK/iran-flag-free-vector.jpg"
+  },
+  {
+    "emoji": "iraq,baghdad,iraqi dinar",
+    "link": "https://i.postimg.cc/mZS2dp8N/Flag-Iraq.jpg"
+  },
+  {
+    "emoji": "ireland,dublin,euro",
+    "link": "https://i.postimg.cc/Jh82dxTZ/FLAG-Ireland.jpg"
+  },
+  {
+    "emoji": "italy,rome,euro",
+    "link": "https://i.postimg.cc/cLRDYYsH/255px-Flag-of-Italy-svg.png"
+  },
+  {
+    "emoji": "jamaica,kingston,jamaican dollar",
+    "link": "https://i.postimg.cc/FFfXSPwH/1280px-Flag-of-Jamaica-svg.png"
+  },
+  {
+    "emoji": "japan,tokyo,japanese yen",
+    "link": "https://i.postimg.cc/6Q6Dpzdw/1200px-Flag-of-Japan-svg.png"
+  },
+  {
+    "emoji": "jordan,amman,jordanian dinar",
+    "link": "https://i.postimg.cc/KYYH2j28/Flag-Jordan.jpg"
+  },
+  {
+    "emoji": "kazakhstan,nur-sultan,kazakhstani tenge",
+    "link": "https://i.postimg.cc/k5DfHHQV/1000px-Flag-of-Kazakhstan-svg.png"
+  },
+  {
+    "emoji": "kenya,nairobi,kenyan shilling",
+    "link": "https://i.postimg.cc/pXxkvrQM/Flag-Kenya.jpg"
+  },
+  {
+    "emoji": "kiribati,south tarawa,australian dollar",
+    "link": "https://i.postimg.cc/fRycW9Jp/1280px-Flag-of-Kiribati-svg.png"
+  },
+  {
+    "emoji": "kosovo,pristina,euro",
+    "link": "https://i.postimg.cc/0QRDCXc1/Flag-Kosovo.jpg"
+  },
+  {
+    "emoji": "kuwait,kuwait city,kuwaiti dinar",
+    "link": "https://i.postimg.cc/dVhCccfK/Flag-Kuwait.jpg"
+  },
+  {
+    "emoji": "kyrgyzstan,bishkek,kyrgyzstani som",
+    "link": "https://i.postimg.cc/0Nd2Lt9s/Kyrgyz-flag.gif"
+  },
+  {
+    "emoji": "laos,vientiane,laotian kip",
+    "link": "https://i.postimg.cc/WbBNtR3V/laos-300x300.jpg"
+  },
+  {
+    "emoji": "latvia,riga,euro",
+    "link": "https://i.postimg.cc/2SC0myDB/flag-latvia-flag-of-latvia-latvia-large-flag-latvian-flag-hd-wallpaper-preview.jpg"
+  },
+  {
+    "emoji": "lebanon,beirut,lebanese pound",
+    "link": "https://i.postimg.cc/zGDF6QCC/255px-Flag-of-Lebanon-svg.png"
+  },
+  {
+    "emoji": "lesotho,maseru,lesotho loti",
+    "link": "https://i.postimg.cc/zX7nCksV/800px-Flag-of-Lesotho-svg.png"
+  },
+  {
+    "emoji": "liberia,monrovia,liberian dollar",
+    "link": "https://i.postimg.cc/43Dtf29F/Flag-Liberia.jpg"
+  },
+  {
+    "emoji": "libya,tripoli,libyan dinar",
+    "link": "https://i.postimg.cc/zBThVwwD/Flag-Libya.jpg"
+  },
+  {
+    "emoji": "liechtenstein,vaduz,swiss franc",
+    "link": "https://i.postimg.cc/Cxtn7rmL/800px-Flag-of-Liechtenstein-svg.png"
+  },
+  {
+    "emoji": "lithuania,vilnius,euro",
+    "link": "https://i.postimg.cc/kGn2G0Xw/640px-Flag-of-Lithuania-svg.png"
+  },
+  {
+    "emoji": "luxembourg,luxembourg city,euro",
+    "link": "https://i.postimg.cc/02Xz5Hgd/Flag-Luxembourg.jpg"
+  },
+  {
+    "emoji": "madagascar,antananarivo,malagasy ariary",
+    "link": "https://i.postimg.cc/8kt5wnCQ/Flag-Madagascar.jpg"
+  },
+  {
+    "emoji": "malawi,lilongwe,malawian kwacha",
+    "link": "https://i.postimg.cc/0QGCL1BC/flag-of-malawi-logo-8-AB8-C8-BCCF-seeklogo-com.png"
+  },
+  {
+    "emoji": "malaysia,kuala lumpur,malaysian ringgit",
+    "link": "https://i.postimg.cc/jdShk9Qz/Flag-Malaysia.jpg"
+  },
+  {
+    "emoji": "maldives,male,maldivian rufiyaa",
+    "link": "https://i.postimg.cc/3wT4z05P/Flag-Maldives.jpg"
+  },
+  {
+    "emoji": "mali,bamako,west african cfa franc",
+    "link": "https://i.postimg.cc/4ymmpzVh/Flag-Mali.jpg"
+  },
+  {
+    "emoji": "malta,valletta,euro",
+    "link": "https://i.postimg.cc/brDwZqfx/255px-Flag-of-Malta-svg.png"
+  },
+  {
+    "emoji": "marshall islands,majuro,united states dollar",
+    "link": "https://i.postimg.cc/P5zrp69R/1200px-Flag-of-the-Marshall-Islands-svg.png"
+  },
+  {
+    "emoji": "mauritania,nouakchott,mauritanian ouguiya",
+    "link": "https://i.postimg.cc/FFdSd4ZC/2560px-Flag-of-Mauritania-svg.png"
+  },
+  {
+    "emoji": "mauritius,port louis,mauritian rupee",
+    "link": "https://i.postimg.cc/9fQRW50p/1024px-Flag-of-Mauritius-svg.png"
+  },
+  {
+    "emoji": "mexico,mexico city,peso",
+    "link": "https://i.postimg.cc/htShrWLB/1200px-Flag-of-Mexico.png"
+  },
+  {
+    "emoji": "micronesia,palikir,us dollar",
+    "link": "https://i.postimg.cc/4xNNcvG4/2000px-Flag-of-the-Federated-States-of-Micronesia-svg.png"
+  },
+  {
+    "emoji": "moldova,chisinau,moldovan leu",
+    "link": "https://i.postimg.cc/J0xC7gGN/Flag-Moldova.jpg"
+  },
+  {
+    "emoji": "monaco,monaco,euro",
+    "link": "https://i.postimg.cc/gcSMdm0M/1280px-Flag-of-Monaco-svg.png"
+  },
+  {
+    "emoji": "mongolia,ulaanbaatar,togrog",
+    "link": "https://i.postimg.cc/3wT19wLw/2560px-Flag-of-Mongolia-svg.png"
+  },
+  {
+    "emoji": "montenegro,podgorica,euro",
+    "link": "https://i.postimg.cc/8k0b94y9/2560px-Flag-of-Montenegro-svg.png"
+  },
+  {
+    "emoji": "morocco,rabat,moroccan dirham",
+    "link": "https://i.postimg.cc/2SFhk7wz/1200px-Flag-of-Morocco-large-stroke-svg.png"
+  },
+  {
+    "emoji": "mozambique,maputo,mozambican metical",
+    "link": "https://i.postimg.cc/J0kp7YKT/2560px-Flag-of-Mozambique-svg.png"
+  },
+  {
+    "emoji": "myanmar,naypyidaw,kyat",
+    "link": "https://i.postimg.cc/SKS1LrNs/illustration-myanmar-flag-53876-27149.jpg"
+  },
+  {
+    "emoji": "namibia,windhoek,namibian dollar",
+    "link": "https://i.postimg.cc/fbwf4rY7/flag-400.png"
+  },
+  {
+    "emoji": "nauru,yaren,australian dollar",
+    "link": "https://i.postimg.cc/t7QFBSXx/2000px-Flag-of-Nauru-svg.png"
+  },
+  {
+    "emoji": "nepal,kathmandu,nepalese rupee",
+    "link": "https://i.postimg.cc/9FRx1KBr/NP-Nepal-Flag-1024.png"
+  },
+  {
+    "emoji": "netherlands,amsterdam,euro",
+    "link": "https://i.postimg.cc/j5t9FcSB/1200px-Flag-of-the-Netherlands-svg.png"
+  },
+  {
+    "emoji": "new zealand,wellington,new zealand dollar",
+    "link": "https://i.postimg.cc/bvQWgWpQ/800px-Flag-of-New-Zealand-svg.png"
+  },
+  {
+    "emoji": "nicaragua,managua,nicaraguan cordoba",
+    "link": "https://i.postimg.cc/90X6rb3y/2560px-Flag-of-Nicaragua-1924-svg.png"
+  },
+  {
+    "emoji": "niger,niamey,west african cfa franc",
+    "link": "https://i.postimg.cc/jqJN1bG0/Flag-Nigeria.jpg"
+  },
+  {
+    "emoji": "nigeria,abuja,nigerian naira",
+    "link": "https://i.postimg.cc/jqJN1bG0/Flag-Nigeria.jpg"
+  },
+  {
+    "emoji": "north korea,pyongyang,north korean won",
+    "link": "https://i.postimg.cc/XvHFR7j3/Flag-North-Korea.jpg"
+  },
+  {
+    "emoji": "north macedonia,skopje,macedonian denar",
+    "link": "https://i.postimg.cc/K4S86C3m/1024px-Flag-of-North-Macedonia-svg.png"
+  },
+  {
+    "emoji": "norway,oslo,norwegian krone",
+    "link": "https://i.postimg.cc/nrssbvdG/2560px-Flag-of-Norway-svg.png"
+  },
+
+  {
+    "emoji": "oman,muscat,omani rial",
+    "link": "https://i.postimg.cc/435Hz47V/Flag-Oman.jpg"
+  },
+  {
+    "emoji": "pakistan,islamabad,pakistani rupee",
+    "link": "https://i.postimg.cc/90z9X3fT/flag-symbolism-Pakistan-design-Islamic.jpg"
+  },
+  {
+    "emoji": "palau,melekeok,united states dollar",
+    "link": "https://i.postimg.cc/Y0y1QrPb/2560px-Flag-of-Palau-svg.png"
+  },
+  {
+    "emoji": "panama,panama city,panamanian balboa",
+    "link": "https://i.postimg.cc/Hxg3LLGM/1200px-Flag-of-Panama-svg.png"
+  },
+  {
+    "emoji": "papua new guinea,port moresby,papua new guinean kina",
+    "link": "https://i.postimg.cc/x89s61tQ/640px-Flag-of-Papua-New-Guinea-svg.png"
+  },
+  {
+    "emoji": "paraguay,asuncion,paraguayan guarani",
+    "link": "https://i.postimg.cc/xd1gN1tN/Flag-Paraguay.jpg"
+  },
+  {
+    "emoji": "peru,lima,peruvian sol",
+    "link": "https://i.postimg.cc/7ZZFxm14/Flag-Peru.jpg"
+  },
+  {
+    "emoji": "philippines,manila,philippine peso",
+    "link": "https://i.postimg.cc/j26pj1kx/Flag-Philippines.jpg"
+  },
+  {
+    "emoji": "poland,warsaw,polish zloty",
+    "link": "https://i.postimg.cc/W3qjsXvz/Flag-of-Poland-Crest.png"
+  },
+  {
+    "emoji": "portugal,lisbon,euro",
+    "link": "https://i.postimg.cc/HkmLBDC2/255px-Flag-of-Portugal-svg.png"
+  },
+  {
+    "emoji": "qatar,doha,qatari riyal",
+    "link": "https://i.postimg.cc/prgH98PC/qatar-162396-480.png"
+  },
+  {
+    "emoji": "romania,bucharest,romanian leu",
+    "link": "https://i.postimg.cc/vmXVw8vX/255px-Flag-of-Romania-svg.png"
+  },
+  {
+    "emoji": "russia,moscow,russian ruble",
+    "link": "https://i.postimg.cc/T3Mmr4wj/640px-Flag-of-Russia-svg.png"
+  },
+  {
+    "emoji": "rwanda,kigali,rwandan franc",
+    "link": "https://i.postimg.cc/nVWqLzfP/rw-flag.jpg"
+  },
+  {
+    "emoji": "saint lucia,castries,east caribbean dollar",
+    "link": "https://i.postimg.cc/d0cBV0rY/320px-Flag-of-Samoa-svg.png"
+  },
+  {
+    "emoji": "samoa,apia,samoan tālā",
+    "link": "https://i.postimg.cc/d0cBV0rY/320px-Flag-of-Samoa-svg.png"
+  },
+  {
+    "emoji": "san marino,san marino,euro",
+    "link": "https://i.postimg.cc/K8693fXC/flag-one-few-San-Marino-Europe-design.jpg"
+  },
+  {
+    "emoji": "saudi arabia,riyadh,saudi riyal",
+    "link": "https://i.postimg.cc/vT0q1dMv/2560px-Flag-of-Saudi-Arabia-svg.png"
+  },
+  {
+    "emoji": "senegal,dakar,cfa franc",
+    "link": "https://i.postimg.cc/9f9nLStW/Flag-Senegal.jpg"
+  },
+  {
+    "emoji": "serbia,belgrade,serbian dinar",
+    "link": "https://i.postimg.cc/nzvNh5Cd/Flag-Serbia.jpg"
+  },
+  {
+    "emoji": "seychelles,victoria,seychellois rupee",
+    "link": "https://i.postimg.cc/VvwQ9wxQ/800px-Flag-of-Seychelles-svg.png"
+  },
+  {
+    "emoji": "sierra leone,freetown,sierra leonean leone",
+    "link": "https://i.postimg.cc/6ppK19yB/Flag-Sierra-Leone.jpg"
+  },
+  {
+    "emoji": "singapore,singapore,singapore dollar",
+    "link": "https://i.postimg.cc/BbfshH1z/1200px-Flag-of-Singapore-svg.png"
+  },
+  {
+    "emoji": "slovakia,bratislava,euro",
+    "link": "https://i.postimg.cc/1zzz6Gpc/2560px-Flag-of-Slovakia-svg.png"
+  },
+  {
+    "emoji": "slovenia,ljubljana,euro",
+    "link": "https://i.postimg.cc/nVmhvcQ5/2560px-Flag-of-Slovenia-svg.png"
+  },
+  {
+    "emoji": "solomon islands,honiara,solomon islands dollar",
+    "link": "https://i.postimg.cc/cHrrqRC4/solomon-islands-country-flag-free-vector.jpg"
+  },
+  {
+    "emoji": "somalia,mogadishu,somali shilling",
+    "link": "https://i.postimg.cc/WbDtY6K9/Flag-Somalia.jpg"
+  },
+  {
+    "emoji": "south africa,pretoria,south african rand",
+    "link": "https://i.postimg.cc/fyDjjq5g/Flag-South-Africa.jpg"
+  },
+  {
+    "emoji": "south korea,seoul,south korean won",
+    "link": "https://i.postimg.cc/L6vvvSck/Flag-South-Korea.jpg"
+  },
+  {
+    "emoji": "taiwan,taipei,new taiwan dollar",
+    "link": "https://i.postimg.cc/GtCzgm3K/1200px-Flag-of-the-Republic-of-China-svg.png"
+  },
+  {
+    "emoji": "tajikistan,dushanbe,somoni",
+    "link": "https://i.postimg.cc/FRcDxLv1/Flag-Tajikistan.jpg"
+  },
+  {
+    "emoji": "tanzania,dodoma,tanzanian shilling",
+    "link": "https://i.postimg.cc/3wkLdqbX/Flag-Tanzania.jpg"
+  },
+  {
+    "emoji": "thailand,bangkok,baht",
+    "link": "https://i.postimg.cc/sgDHRxY0/Flag-Thailand.jpg"
+  },
+  {
+    "emoji": "timor leste,dili,us dollar",
+    "link": "https://i.postimg.cc/tRWM3LRD/Flag-of-East-Timor.jpg"
+  },
+  {
+    "emoji": "togo,lome,cfa franc",
+    "link": "https://i.postimg.cc/C5T6y47j/Flag-Tonga.jpg"
+  },
+  {
+    "emoji": "tonga,nuku'alofa,tongan pa'anga",
+    "link": "https://i.postimg.cc/dtRgYgzD/Flag-Trinidad-and-Tobago.jpg"
+  },
+  {
+    "emoji": "tunisia,tunis,tunisian dinar",
+    "link": "https://i.postimg.cc/8CXqYWxH/Flag-Tunisia.jpg"
+  },
+  {
+    "emoji": "turkey,ankara,turkish lira",
+    "link": "https://i.postimg.cc/kXrd9QGY/800px-Flag-of-Turkey-svg.png"
+  },
+  {
+    "emoji": "turkmenistan,ashgabat,turkmen manat",
+    "link": "https://i.postimg.cc/KzRycQtw/2560px-Flag-of-Turkmenistan-svg.png"
+  },
+  {
+    "emoji": "tuvalu,funafuti,tuvaluan dollar",
+    "link": "https://i.postimg.cc/VvxZ8WFq/tv-1995a.gif"
+  },
+  {
+    "emoji": "uganda,kampala,ugandan shilling",
+    "link": "https://i.postimg.cc/qv8SpSSz/255px-Flag-of-Uganda-svg.png"
+  },
+  {
+    "emoji": "ukraine,kiev,ukrainian hryvnia",
+    "link": "https://i.postimg.cc/bJ64KnMg/Flag-Ukraine.jpg"
+  },
+  {
+    "emoji": "united arab emirates,abu dhabi,united arab emirates dirham",
+    "link": "https://i.postimg.cc/GmGwHH83/Flag-United-Arab-Emirates.jpg"
+  },
+  {
+    "emoji": "united kingdom,london,pound sterling",
+    "link": "https://i.postimg.cc/Zq5cXQSk/1200px-Flag-of-the-United-Kingdom-1-2-svg.png"
+  },
+  {
+    "emoji": "united states,washington,us dollar",
+    "link": "https://i.postimg.cc/wjd44FMH/Flag-United-States-of-America.jpg"
+  },
+  {
+    "emoji": "uruguay,montevideo,uruguayan peso",
+    "link": "https://i.postimg.cc/FzBprHFj/Flag-Uruguay.jpg"
+  },
+  {
+    "emoji": "uzbekistan,tashkent,uzbekistani so'm",
+    "link": "https://i.postimg.cc/26xXDYBw/Flag-Uzbekistan.jpg"
+  },
+  {
+    "emoji": "vanuatu,port-vila,vanuatu vatu",
+    "link": "https://i.postimg.cc/Cxm1znpT/800px-Flag-of-Vanuatu-official-svg.png"
+  },
+  {
+    "emoji": "vatican city,vatican city,euro",
+    "link": "https://i.postimg.cc/vm2cSg0L/640px-Flag-of-the-Vatican-City-svg.png"
+  },
+  {
+    "emoji": "venezuela,caracas,venezuelan bolívar",
+    "link": "https://i.postimg.cc/tTfpFF2w/Flag-Venezuela.jpg"
+  },
+  {
+    "emoji": "vietnam,hanoi,vietnamese dong",
+    "link": "https://i.postimg.cc/C5BM2cRw/Flag-Vietnam.jpg"
+  },
+  {
+    "emoji": "yemen,sana'a,yemeni rial",
+    "link": "https://i.postimg.cc/LXvZSQ4f/1280px-Flag-of-Yemen-svg.png"
+  },
+  {
+    "emoji": "zambia,lusaka,zambian kwacha",
+    "link": "https://i.postimg.cc/bNy3142X/Flag-of-Zambia-1.jpg"
+  },
+  {
+    "emoji": "zimbabwe,harare,zimbabwean dollar",
+    "link": "https://i.postimg.cc/N0jcVdnZ/1200px-Flag-of-Zimbabwe-svg.png"
+  }
+]
+
