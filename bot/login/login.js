@@ -91,24 +91,18 @@ const titles = [
   ["G O A T   B O T   V 2.5 @" + currentVersion]
   ["GOATBOT V2.5"],
 ];
-const maxWidth = process.stdout.columns;
-const title =
-  maxWidth > 58
-    ? titles[0]
-    : maxWidth > 36
-      ? titles[1]
-      : maxWidth > 26
-        ? titles[2]
-        : titles[3];
+const maxWidth = process.stdout.columns || 80;
 
 console.log(gradient("#f5af19", "#f12711")(createLine(null, true)));
 console.log();
-for (const text of title) {
-  const textColor = gradient("#FA8BFF", "#2BD2FF", "#2BFF88")(text);
-  centerText(textColor, text.length);
-}
+
+const text = "GoatBot V2.5 - A simple Messenger Bot";
+const textColor = gradient("#FA8BFF", "#2BD2FF", "#2BFF88")(text);
+centerText(textColor, text.length);
+
 let subTitle = `GoatBot V2.5 Unofficials - A simple Bot chat messenger use personal account`;
 const subTitleArray = [];
+
 if (subTitle.length > maxWidth) {
   while (subTitle.length > maxWidth) {
     let lastSpace = subTitle.slice(0, maxWidth).lastIndexOf(" ");
@@ -116,10 +110,11 @@ if (subTitle.length > maxWidth) {
     subTitleArray.push(subTitle.slice(0, lastSpace).trim());
     subTitle = subTitle.slice(lastSpace).trim();
   }
-  subTitle ? subTitleArray.push(subTitle) : "";
+  if (subTitle) subTitleArray.push(subTitle);
 } else {
   subTitleArray.push(subTitle);
 }
+
 const author = "Created by NTKhang with ♡";
 const srcUrl = "Source code: https://github.com/ntkhang03/Goat-Bot-V2";
 const fakeRelease = "ALL VERSIONS NOT RELEASED HERE ARE FAKE";
