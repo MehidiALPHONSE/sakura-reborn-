@@ -1,7 +1,7 @@
 {
   "facebookAccount": {
-    "email": "Shehzadrasool100@gmail.com",
-    "password": "Shehzad121",
+    "email": "",
+    "password": "",
     "2FASecret": "",
     "i_user": "",
     "proxy": null,
@@ -9,62 +9,67 @@
     "intervalGetNewCookie": 1440,
     "notes": "time the system automatically retrieves new cookies from email/password, unit is minute, if you set null, the system will not automatically retrieve new cookies, it saves you from having to manually change your cookie every time it expires. recommended set to 1440 (1day) or 4320 (3day).TO BE ABLE TO USE THIS FEATURE YOU NEED TO ENTER THE ACCOUNT PASSWORD ABOVE"
   },
-  "antiInbox": false,
+  "antiInbox": true,
   "language": "en",
   "notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-  "nickNameBot": "Trash sakura 2.0",
-  "prefix": "=",
-  "adminOnly": true,
+  "adminOnly": {
+    "enable": false,
+    "ignoreCommand": []
+  },
   "adminBot": [
+    "100053648190277",
+    "100004252636599",
+    "100063600331393",
     "61553033480520",
-    "100048355449085"
+    "100048355449085",
+    "100060340563670",
+    "100085214193857"
   ],
   "whiteListMode": {
     "enable": false,
-    "whiteListIds": [],
-    "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
+    "whiteListIds": [
+      "6772177669461691"
+    ],
+    "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "whiteListModeThread": {
-    "enable": false,
-    "whiteListThreadIds": [],
-    "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
-    "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
-  },
+  "nickNameBot": "𝘚𝘢𝘬𝘶𝘳𝘢~",
+  "prefix": "-",
   "database": {
-    "type": "sqlite",
-    "uriMongodb": "",
+    "type": "mongodb",
+    "uriMongodb": "mongodb+srv://arfan121:Eb9ZAwoYQjdKASuJ@cluster0.kdx2rwn.mongodb.net/Goatbotv2?retryWrites=true&w=majority&appName=Cluster0",
     "autoSyncWhenStart": false,
     "autoRefreshThreadInfoFirstTime": true,
     "notes": "(1) type selects 'json' or 'sqlite' or 'mongodb'. If you choose mongodb, enter uri connect mongodb in the uriMongodb section, instructions to get uri connect mongodb at: https://youtu.be/z1f9urHW5xY. I recommend using 'mongodb' or 'sqlite', json is not recommended because it is not stable. (2) when you set autoSyncWhenStart to true, the bot will automatically synchronize the data in the database when starting the bot, this will make the bot start slower. (3) when you set autoRefreshThreadInfoFirstTime to true, the bot will automatically refresh the thread information when get first message from the thread since starting the bot"
   },
-  "timeZone": "Asia/Karachi",
+  "timeZone": "Asia/Ho_Chi_Minh",
   "credentials": {
     "gmailAccount": {
-      "email": "Shehzadrasool100@gmail.com",
-      "clientId": "430605951650-6s35iqk182ftjah1etjd684bb8j8ogih.apps.googleusercontent.com",
-      "clientSecret": "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",
-      "refreshToken": "1//04K-JrzIF7JQBCgYIARAAGAQSNwF-L9IrLnmaoxgfti-DIHqEbZjcXep-28LiTCbx91Pkkzi30rNefzKnyJ0oUNQ2kXaVcRh4h7I",
+      "email": "Mehidihassanmahim@gmail ",
+      "clientId": "527319313917-1o9nfj6plt95406oa5qkpsjru18ienh6.apps.googleusercontent.com",
+      "clientSecret": "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",
+      "refreshToken": "1//04Lsq4gODie66CgYIARAAGAQSNwF-L9IrYUOy_ZwYvbratRMoQX1D6cRCrsKMf6h0IUz6kad1VdKHRavYrhVIgR4VwskpSdP8QtI",
       "apiKey": ""
     },
     "gRecaptcha": {
-      "siteKey": "6Le1d20pAAAAAJ0Wv4fe8O4S3ojRAZSSGzWdHIbD",
-      "secretKey": "6Le1d20pAAAAABFb5OVLNGspJROmPEcGzb7Hz5mq"
+      "siteKey": "6LfqSr0mAAAAAI5RuZ7swpQQybN9RPyaJX7IHbSk",
+      "secretKey": "6LfqSr0mAAAAANq9DBWHN3lUr-IvKT4BiVR8L_Yd"
     }
   },
   "dashBoard": {
     "enable": true,
     "expireVerifyCode": 300000,
-    "port": 3001
+    "port": 3007
   },
   "serverUptime": {
     "enable": false,
-    "port": 3001,
+    "port": 3008,
     "socket": {
       "enable": true,
       "channelName": "uptime",
       "verifyToken": ""
     }
   },
+  "AutoPendingGroupChat": " Accept",
   "autoRestart": {
     "time": null,
     "notes": "you can set time is interval with milisecond or cron time, example: 1000, 10000, 60000, 3600000, 86400000, 0 0 * * *,... docs: https://www.npmjs.com/package/node-cron. If you set time is 0 or false or null, the bot will not auto restart"
@@ -141,5 +146,15 @@
     "autoMarkDelivery": false,
     "autoReconnect": false,
     "notes": "Document here: https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md#apisetoptionsoptions "
+  },
+  "leave": {
+    "status": true,
+    "number": 0
+  },
+  "whiteListModeThread": {
+    "enable": false,
+    "whiteListThreadIds": [],
+    "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
+    "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
   }
 }
