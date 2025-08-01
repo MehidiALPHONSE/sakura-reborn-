@@ -9,7 +9,7 @@ module.exports = {
 	config: {
 		name: "qrcode",
 		version: "1.0",
-		author: "SiAM",
+		author: "Arfan",
 		countDown: 5,
 		role: 0,
 		shortDescription : "make QR code or Decode QR code",
