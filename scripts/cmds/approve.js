@@ -1,68 +1,71 @@
 const fs = require('fs');
-const { getStreamFromURL } = global.utils;
-//Modified By Ohio03\\
+
 module.exports = {
   config: {
     name: "approve",
     version: "2.0",
     role: "2",
-    author: "Loufi",
+    author: "Loufi | Arfan",
     cooldown: "5",
     shortDescription: {
-      en: "Add or remove a thread ID from threads.json",
-      vi: "Add or remove a thread ID from threads.json"
+      en: "Approve or disapprove a group",
     },
     longDescription: {
-      en: "Group Approve and Disapproved Command",
-      vi: "Add or remove a thread ID from threads.json. Usage: /approve [add/remove] [thread ID]"
+      en: "Add or remove a group ID from groups.json to control bot access",
     },
     category: "Developer",
     guide: {
-      en: "{pn} (add/remove) [thread ID]",
-      vi: "{pn} (add/remove) [thread ID]"
+      en: "{pn} add/remove [group ID]",
     }
   },
+
   onStart: async function ({ api, event, threadsData, message, args }) {
-    
-    const threadsFile = 'threads.json';
+    const groupsFile = 'groups.json';
 
-    if (args.length < 1) {
-      message.reply("You must provide an action: approve (add/remove) [thread ID]");
-      return;
-    }
-    if (!args || args.length < 2) {
-      return message.reply("You must provide the following action: approve (add/remove) [thread ID]");
+    if (args.length < 2) {
+      return message.reply("❗ Usage: approve add/remove [groupID]");
     }
 
-    const action = args[0];
+    const action = args[0].toLowerCase();
     const groupId = args[1];
-    const threadData = await threadsData.get(groupId);
-    const name = threadData.threadName;
+    let name = "";
 
-    let threads = [];
     try {
-      threads = JSON.parse(fs.readFileSync(threadsFile));
+      const threadData = await threadsData.get(groupId);
+      name = threadData?.threadName || "Unknown Group";
     } catch (err) {
-      console.error('', err);
+      name = "Unknown Group";
+    }
+
+    let groups = [];
+    try {
+      if (fs.existsSync(groupsFile)) {
+        groups = JSON.parse(fs.readFileSync(groupsFile, 'utf8'));
+      }
+    } catch (err) {
+      console.error("❌ Failed to read groups.json:", err);
     }
 
     if (action === "add") {
-      if (!threads.includes(groupId)) {
-        threads.push(groupId);
-        fs.writeFileSync(threadsFile, JSON.stringify(threads));
-        message.reply(`🌀 | Group: ${name}\n🆔 | TID: ${groupId}\n✅ | Status: Approved!`);
+      if (!groups.includes(groupId)) {
+        groups.push(groupId);
+        fs.writeFileSync(groupsFile, JSON.stringify(groups, null, 2));
+        return message.reply(`✅ Approved!\n📌 Group: ${name}\n🆔 TID: ${groupId}`);
       } else {
-        message.reply(`🌀 | Group: ${name}\n🆔 | TID: ${groupId}\n✅ | Status: Already Approved!`);
-      }
-    } else if (action === "remove") {
-      const index = threads.indexOf(groupId);
-      if (index >= 0) {
-        threads.splice(index, 1);
-        fs.writeFileSync(threadsFile, JSON.stringify(threads));
-        message.reply(`🌀 | Group: ${name}\n🆔 | TID: ${groupId}\n❎ | Status: Disapproved!`);
-      } else {
-        message.reply(`🌀 | Group: ${name}\n🆔 | TID: ${groupId}\n❎ | Status: Not Approved Before!`);
+        return message.reply(`ℹ️ Group already approved!\n📌 Group: ${name}\n🆔 TID: ${groupId}`);
       }
     }
+
+    if (action === "remove") {
+      if (groups.includes(groupId)) {
+        groups = groups.filter(id => id !== groupId);
+        fs.writeFileSync(groupsFile, JSON.stringify(groups, null, 2));
+        return message.reply(`❌ Disapproved!\n📌 Group: ${name}\n🆔 TID: ${groupId}`);
+      } else {
+        return message.reply(`ℹ️ This group is not approved yet.\n🆔 TID: ${groupId}`);
+      }
+    }
+
+    return message.reply("❗ Invalid action. Use: add/remove");
   }
 };
