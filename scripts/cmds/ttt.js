@@ -1,140 +1,131 @@
-const { getPrefix } = global.utils;
+module.exports = { config: { name: "ttt", aliases: ["tictactoe"], version: "1.2", author: "Arfan", role: 0, shortDescription: { en: "Tic Tac Toe with friends" }, longDescription: { en: "Play Tic Tac Toe by mentioning a friend. Reply with 1-9 to play." }, category: "game", guide: "Use: ttt @friend\nReply with number (1-9) to make your move.\nUse: ttt close — to end the game." },
 
-module.exports = { config: { name: "ttt", version: "1.0", author: "arfan", countDown: 5, role: 0, shortDescription: { en: "play tictactoe" }, longDescription: { en: "play tictactoe with friend" }, category: "game", guide: { en: "Use {pn} to play tictactoe with another member." } },
+onStart: async function ({ event, message, api, usersData, args }) { const mention = Object.keys(event.mentions);
 
-onStart: async function ({ api, event, args, message }) { if (!global.fff) global.fff = [];
+if (!global.game) global.game = {};
+const game = global.game[event.threadID];
 
-const xEmoji = "❌";
-const oEmoji = "⭕";
-const emptyEmoji = "➖";
-
-function renderBoard(board) {
-  let display = "";
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      display += board[i][j] + " ";
-    }
-    display += "\n";
+if (args[0] === "close") {
+  if (!game?.on) {
+    return message.reply("❌ No game is currently running in this thread.");
   }
-  return display;
-}
 
-function createBoard() {
-  return [
-    [emptyEmoji, emptyEmoji, emptyEmoji],
-    [emptyEmoji, emptyEmoji, emptyEmoji],
-    [emptyEmoji, emptyEmoji, emptyEmoji]
-  ];
-}
-
-function checkWin(board, player) {
-  // Rows and columns
-  for (let i = 0; i < 3; i++) {
-    if (board[i][0] === player && board[i][1] === player && board[i][2] === player) return true;
-    if (board[0][i] === player && board[1][i] === player && board[2][i] === player) return true;
+  if (event.senderID === game.player1.id || event.senderID === game.player2.id) {
+    const quitter = event.senderID === game.player1.id ? game.player1 : game.player2;
+    const winner = event.senderID === game.player1.id ? game.player2 : game.player1;
+    message.reply({
+      body: `🏳️ ${quitter.name} quit.\n🏆 Winner: ${winner.name}`,
+      mentions: [
+        { tag: game.player1.name, id: game.player1.id },
+        { tag: game.player2.name, id: game.player2.id }
+      ]
+    });
+    game.on = false;
+  } else {
+    message.reply("You are not part of the current game.");
   }
-  // Diagonals
-  if (board[0][0] === player && board[1][1] === player && board[2][2] === player) return true;
-  if (board[0][2] === player && board[1][1] === player && board[2][0] === player) return true;
-
-  return false;
+  return;
 }
 
-function isFull(board) {
-  return board.every(row => row.every(cell => cell !== emptyEmoji));
+if (game?.on) {
+  return message.reply("❌ A game is already running in this thread. Type `ttt close` to end it before starting a new one.");
 }
 
-if (!args[0] || Object.keys(event.mentions).length === 0) {
-  return message.reply("Mention someone to play with!");
+if (mention.length === 0) {
+  return message.reply("⚠️ Mention someone to start a game!");
 }
 
-const opponentID = Object.keys(event.mentions)[0];
-if (opponentID === event.senderID) {
-  return message.reply("You can't play with yourself!");
-}
-
-if (global.game && global.game[event.threadID]) {
-  return message.reply("A game is already in progress in this thread.");
-}
-
-const board = createBoard();
-const game = {
-  board,
-  playerX: event.senderID,
-  playerO: opponentID,
-  turn: "X"
+const player1 = {
+  id: event.senderID,
+  name: await usersData.getName(event.senderID),
+  mark: "❌"
 };
 
-const boardMessage = await message.reply(
-  `🎮 Tic Tac Toe 🎮\n\n${event.senderID} (❌) vs ${opponentID} (⭕)\n\n${renderBoard(board)}\n❌ = ${event.senderID}\n⭕ = ${opponentID}\n\nReply with row,col to make a move (e.g., 1,2)`
-);
+const player2 = {
+  id: mention[0],
+  name: await usersData.getName(mention[0]),
+  mark: "⭕"
+};
 
-game.messageID = boardMessage.messageID;
-global.game = global.game || {};
-global.game[event.threadID] = game;
+const board = Array(9).fill("⬜");
+
+const displayBoard = () =>
+  `${board[0]} | ${board[1]} | ${board[2]}\n` +
+  `${board[3]} | ${board[4]} | ${board[5]}\n` +
+  `${board[6]} | ${board[7]} | ${board[8]}`;
+
+const intro =
+  `🎮 Tic Tac Toe 🎮\n\n` +
+  `${player1.name} (❌) vs ${player2.name} (⭕)\n\n` +
+  displayBoard() + `\n\n` +
+  `Reply with a number (1-9) to place your mark:\n` +
+  `1️⃣ 2️⃣ 3️⃣\n4️⃣ 5️⃣ 6️⃣\n7️⃣ 8️⃣ 9️⃣`;
+
+message.reply(intro, (err, info) => {
+  global.game[event.threadID] = {
+    on: true,
+    board,
+    turn: player1,
+    player1,
+    player2,
+    moveCount: 0,
+    messageID: info.messageID
+  };
+});
 
 },
 
-onChat: async function ({ event, message }) {
-  if (event.messageReply && global.game?.[event.threadID]?.on) {
-    const game = global.game[event.threadID];
+onChat: async function ({ event, message }) { const game = global.game?.[event.threadID]; if (!game?.on) return;
 
-    if (event.messageReply.messageID === game.bid) {
-      if (game.turn === event.senderID) {
-        const input = event.body;
-        if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(input)) {
-          if (!game.avcell.includes(input)) return message.reply("this one is already blocked");
+if (event.type === "message_reply" && event.messageReply.messageID === game.messageID) {
+  const input = event.body.trim();
+  const move = parseInt(input);
 
-          game.avcell = game.avcell.filter(x => x !== input);
-          let index = parseInt(input) - 1;
-          game.board2 = game.board2.substr(0, index) + game.bidd + game.board2.substr(index + 1);
+  if (isNaN(move) || move < 1 || move > 9)
+    return message.reply("❗ Invalid input. Reply with number 1-9.");
 
-          let boardArray = game.board.replace(/\n/g, '').split('');
-          boardArray[index] = game.bidd;
-          game.board = `${boardArray.slice(0, 3).join('')}\n${boardArray.slice(3, 6).join('')}\n${boardArray.slice(6).join('')}`;
+  if (event.senderID !== game.turn.id)
+    return message.reply("⏳ It's not your turn.");
 
-          message.send(game.board, (err, info) => {
-            game.bid = info.messageID;
-            global.fff.push(info.messageID);
-          });
+  const index = move - 1;
+  if (game.board[index] !== "⬜")
+    return message.reply("❌ That cell is already taken!");
 
-          const wins = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-          ];
+  game.board[index] = game.turn.mark;
+  game.moveCount++;
 
-          const won = wins.find(w => w.every(i => game.board2[i] === game.bidd));
+  const displayBoard = () =>
+    `${game.board[0]} | ${game.board[1]} | ${game.board[2]}\n` +
+    `${game.board[3]} | ${game.board[4]} | ${game.board[5]}\n` +
+    `${game.board[6]} | ${game.board[7]} | ${game.board[8]}`;
 
-          if (won) {
-            for (let i of won) boardArray[i] = '✅';
-            game.board = `${boardArray.slice(0, 3).join('')}\n${boardArray.slice(3, 6).join('')}\n${boardArray.slice(6).join('')}`;
-            message.send(game.board);
+  const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
 
-            const winner = game.turn === game.player1.id ? game.player1 : game.player2;
-            setTimeout(() => {
-              message.send({
-                body: `Congratulation ${winner.name}, You are the winner of this match..`,
-                mentions: [{ tag: winner.name, id: winner.id }]
-              });
-            }, 1000);
-            game.on = false;
-          } else if (game.counting === 8) {
-            setTimeout(() => message.send("The match remains a draw....."), 1000);
-            game.on = false;
-          } else {
-            game.counting++;
-            message.unsend(event.messageReply.messageID);
-            game.ttrns.push(input);
-            game.turn = game.turn === game.player1.id ? game.player2.id : game.player1.id;
-            game.bidd = game.bidd === "❌" ? "⭕" : "❌";
-          }
-        } else {
-          message.reply("reply from 1-9");
-        }
-      } else {
-        message.reply("not your turn Baka");
-      }
-    }
+  const won = winPatterns.some(p =>
+    p.every(i => game.board[i] === game.turn.mark)
+  );
+
+  if (won) {
+    game.on = false;
+    return message.reply(displayBoard() + `\n\n🎉 ${game.turn.name} wins! 🏆`);
   }
-        }
+
+  if (game.moveCount === 9) {
+    game.on = false;
+    return message.reply(displayBoard() + `\n\n🤝 It's a draw!`);
+  }
+
+  game.turn = game.turn.id === game.player1.id ? game.player2 : game.player1;
+
+  message.reply(
+    displayBoard() +
+    `\n\nNow it's ${game.turn.name}'s (${game.turn.mark}) turn.\nReply with a number (1-9):`
+  );
+}
+
+} };
+
