@@ -6,7 +6,7 @@ module.exports = {
 		version: "1.5",
 		author: "NTKhang",
 		countDown: 5,
-		role: 0,
+		role: 2,
 		description: {
 			vi: "Quản lý các nhóm chat trong hệ thống bot",
 			en: "Manage group chat in bot system"
@@ -65,7 +65,6 @@ module.exports = {
 		const type = args[0];
 
 		switch (type) {
-			// find thread
 			case "find":
 			case "search":
 			case "-f":
@@ -75,10 +74,13 @@ module.exports = {
 				let allThread = await threadsData.getAll();
 				let keyword = args.slice(1).join(" ");
 				if (['-j', '-join'].includes(args[1])) {
-					allThread = allThread.filter(thread => thread.members.some(member => member.userID == global.GoatBot.botID && member.inGroup));
+					allThread = allThread.filter(thread => thread.members?.some(member => member.userID == global.GoatBot.botID && member.inGroup));
 					keyword = args.slice(2).join(" ");
 				}
-				const result = allThread.filter(item => item.threadID.length > 15 && (item.threadName || "").toLowerCase().includes(keyword.toLowerCase()));
+				const result = allThread.filter(item =>
+					item?.threadID?.length > 15 &&
+					(item.threadName || "").toLowerCase().includes(keyword.toLowerCase())
+				);
 				const resultText = result.reduce((i, thread) => i += `\n╭Name: ${thread.threadName}\n╰ID: ${thread.threadID}`, "");
 				let msg = "";
 				if (result.length > 0)
@@ -88,7 +90,6 @@ module.exports = {
 				message.reply(msg);
 				break;
 			}
-			// ban thread
 			case "ban":
 			case "-b": {
 				if (role < 2)
@@ -123,7 +124,6 @@ module.exports = {
 				});
 				return message.reply(getLang("banned", tid, name, reason, time));
 			}
-			// unban thread
 			case "unban":
 			case "-u": {
 				if (role < 2)
@@ -147,7 +147,6 @@ module.exports = {
 				});
 				return message.reply(getLang("unbanned", tid, name));
 			}
-			// info thread
 			case "info":
 			case "-i": {
 				let tid;
