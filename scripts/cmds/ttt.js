@@ -75,39 +75,66 @@ global.game[event.threadID] = game;
 
 },
 
-onChat: async function ({ api, event, message }) { const game = global.game && global.game[event.threadID]; if (!game || event.messageID === game.messageID) return;
+onChat: async function ({ event, message }) {
+  if (event.messageReply && global.game?.[event.threadID]?.on) {
+    const game = global.game[event.threadID];
 
-const move = event.body.split(",").map(num => parseInt(num.trim()) - 1);
-if (move.length !== 2 || move.some(n => n < 0 || n > 2)) return;
+    if (event.messageReply.messageID === game.bid) {
+      if (game.turn === event.senderID) {
+        const input = event.body;
+        if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(input)) {
+          if (!game.avcell.includes(input)) return message.reply("this one is already blocked");
 
-const [row, col] = move;
-const currentPlayer = game.turn === "X" ? game.playerX : game.playerO;
-if (event.senderID !== currentPlayer) return;
+          game.avcell = game.avcell.filter(x => x !== input);
+          let index = parseInt(input) - 1;
+          game.board2 = game.board2.substr(0, index) + game.bidd + game.board2.substr(index + 1);
 
-if (game.board[row][col] !== "➖") {
-  return message.reply("That spot is already taken!");
-}
+          let boardArray = game.board.replace(/\n/g, '').split('');
+          boardArray[index] = game.bidd;
+          game.board = `${boardArray.slice(0, 3).join('')}\n${boardArray.slice(3, 6).join('')}\n${boardArray.slice(6).join('')}`;
 
-game.board[row][col] = game.turn === "X" ? "❌" : "⭕";
+          message.send(game.board, (err, info) => {
+            game.bid = info.messageID;
+            global.fff.push(info.messageID);
+          });
 
-if (checkWin(game.board, game.board[row][col])) {
-  message.reply(`🎉 Player ${event.senderID} wins! 🎉\n\n${renderBoard(game.board)}`);
-  delete global.game[event.threadID];
-  return;
-}
+          const wins = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+          ];
 
-if (isFull(game.board)) {
-  message.reply(`It's a draw! 🤝\n\n${renderBoard(game.board)}`);
-  delete global.game[event.threadID];
-  return;
-}
+          const won = wins.find(w => w.every(i => game.board2[i] === game.bidd));
 
-game.turn = game.turn === "X" ? "O" : "X";
-const nextPlayer = game.turn === "X" ? game.playerX : game.playerO;
+          if (won) {
+            for (let i of won) boardArray[i] = '✅';
+            game.board = `${boardArray.slice(0, 3).join('')}\n${boardArray.slice(3, 6).join('')}\n${boardArray.slice(6).join('')}`;
+            message.send(game.board);
 
-message.reply(
-  `🕹️ It's ${nextPlayer}'s turn (${game.turn === "X" ? "❌" : "⭕"})\n\n${renderBoard(game.board)}\nReply with row,col to move.`
-);
-
-} };
-
+            const winner = game.turn === game.player1.id ? game.player1 : game.player2;
+            setTimeout(() => {
+              message.send({
+                body: `Congratulation ${winner.name}, You are the winner of this match..`,
+                mentions: [{ tag: winner.name, id: winner.id }]
+              });
+            }, 1000);
+            game.on = false;
+          } else if (game.counting === 8) {
+            setTimeout(() => message.send("The match remains a draw....."), 1000);
+            game.on = false;
+          } else {
+            game.counting++;
+            message.unsend(event.messageReply.messageID);
+            game.ttrns.push(input);
+            game.turn = game.turn === game.player1.id ? game.player2.id : game.player1.id;
+            game.bidd = game.bidd === "❌" ? "⭕" : "❌";
+          }
+        } else {
+          message.reply("reply from 1-9");
+        }
+      } else {
+        message.reply("not your turn Baka");
+      }
+    }
+  }
+        }
