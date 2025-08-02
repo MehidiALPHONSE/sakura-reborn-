@@ -1,53 +1,40 @@
-// scripts/events/approvalLeave.js
-
 const fs = require('fs');
 const { getStreamFromURL } = global.utils;
 
 module.exports = async function ({ api, event }) {
+  if (event.logMessageType !== "log:subscribe") return;
+
+  const groupID = event.threadID;
+  const botID = api.getCurrentUserID();
+  const supportGC = "https://m.me/j/AbZd6HddcyXHEFki/";
+  const masterUID = "100004252636599";
+
+  let allowedGroups = [];
   try {
-    console.log("🟢 approvalLeave.js event triggered");
-    
-    // Only run on member added
-    if (event.logMessageType !== "log:subscribe") return;
+    allowedGroups = JSON.parse(fs.readFileSync('groups.json'));
+  } catch (e) {
+    console.log("❌ Error loading groups.json:", e);
+  }
 
-    const threadsFile = 'threads.json';
-    const supportGCLink = "https://m.me/j/AbZd6HddcyXHEFki/";
-    const botID = api.getCurrentUserID();
-    const groupID = event.threadID;
+  // If group not approved
+  if (!allowedGroups.includes(groupID)) {
+    // Step 1: Warning Message
+    api.sendMessage({
+      body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - ${supportGC}\nPlease join the support group for approval.`,
+      attachment: await getStreamFromURL("https://i.imgur.com/UQcCpOd.jpg")
+    }, groupID);
 
-    // ✅ Load approved thread IDs
-    let approvedThreads = [];
-    try {
-      if (fs.existsSync(threadsFile)) {
-        approvedThreads = JSON.parse(fs.readFileSync(threadsFile, "utf8"));
+    // Step 2: Wait and leave
+    setTimeout(async () => {
+      try {
+        await api.sendMessage(
+          `✅ | This group needs approval\n🆔: ${groupID}\n\n🍁 | Master Approve it if valid.`,
+          masterUID
+        );
+        await api.removeUserFromGroup(botID, groupID);
+      } catch (e) {
+        console.log("❌ Leave error:", e);
       }
-    } catch (err) {
-      console.log("❌ threads.json read error:", err);
-    }
-
-    // ✅ If not approved, warn and leave
-    if (!approvedThreads.includes(groupID)) {
-      console.log(`🚫 Not approved group: ${groupID}`);
-
-      await api.sendMessage({
-        body: `🚫 | You added the bot without permission!\n\n🌸 | Support GC - ${supportGCLink}\nPlease join the support group for approval.`,
-        attachment: await getStreamFromURL("https://i.imgur.com/UQcCpOd.jpg")
-      }, groupID);
-
-      // Wait 20s then leave
-      setTimeout(async () => {
-        try {
-          await api.removeUserFromGroup(botID, groupID);
-          console.log("✅ Bot left group:", groupID);
-        } catch (leaveError) {
-          console.log("❌ Leave error:", leaveError);
-        }
-      }, 20000);
-    } else {
-      console.log("✅ Approved group, no action needed.");
-    }
-
-  } catch (error) {
-    console.log("❌ approvalLeave.js error:", error);
+    }, 20000);
   }
 };
