@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "ttt2",
     version: "1.0",
-    author: " vortex",
+    author: "Arfan | ArchitectDevs",
     countDown: 5,
     role: 0,
     shortDescription: {
