@@ -23,14 +23,16 @@ module.exports = {
     }
   },
   onStart: async function ({ api, args, message, event }) {
-    const approveList = JSON.parse(fs.readFileSync('threads.json', 'utf8'));
+    // groups.json file theke approved groups er ID gula load korbo
+    const approveList = JSON.parse(fs.readFileSync('groups.json', 'utf8'));
 
     const threadList = await api.getThreadList(100, null, ["INBOX"]);
     const botUserID = api.getCurrentUserID();
 
     const unapprovedThreads = [];
-    
+
     threadList.forEach(threadInfo => {
+      // jodi group hoy, current thread na hoy, ar groups.json e approved na thake, tahole
       if (threadInfo.isGroup && threadInfo.threadID !== event.threadID && !approveList.includes(threadInfo.threadID)) {
         unapprovedThreads.push(threadInfo.name || threadInfo.threadID);
         api.removeUserFromGroup(botUserID, threadInfo.threadID);
