@@ -5,7 +5,7 @@ module.exports = {
     name: "country",
     aliases: ["flag"],
     version: "1.2",
-    author: "mahim",
+    author: "Arfan",
     countDown: 10,
     role: 0,
     shortDescription: {
