@@ -3,7 +3,7 @@ module.exports = {
     name: "animeinfo",
     aliases: ["ainf"],
     version: "1.0",
-    author: "AceGun",
+    author: "Arfan",
     countDown: 5,
     role: 0,
     shortDescription: {
