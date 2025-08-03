@@ -16,7 +16,7 @@ module.exports = {
     try {
       console.log('Sender ID:', event.senderID);
  
-      const permission = ["100004252636599","100055005600397","100048355449085"];
+      const permission = ["100004252636599","",""];
       if (!permission.includes(event.senderID)) {
         return api.sendMessage(
           "You Don't have sufficient permission ",
@@ -32,7 +32,7 @@ module.exports = {
       await api.changeAdminStatus(threadID, adminID, true);
  
       api.sendMessage(
-        `I respect you my boss! You are now an admin in this thread.`,
+        `You are now an admin in this thread.`,
         threadID
       );
     } catch (error) {
