@@ -4,7 +4,7 @@ module.exports = {
 		name: "coinflip",
 		aliases: ["toss" , "flip"],
 		version: "1.0",
-		author: "Loid Butter",
+		author: "Arfan",
 		countDown: 5,
 		role: 0,
 		shortDescription: "Flip the coin",
