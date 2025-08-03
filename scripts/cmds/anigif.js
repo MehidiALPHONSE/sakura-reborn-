@@ -5,7 +5,7 @@ module.exports = {
     config: {
         name: "anigif",
         version: "1.1",
-        author: "SiAM",
+        author: "Arfan",
         role: 0,
       countDown: 35,
         category: "Fun",
