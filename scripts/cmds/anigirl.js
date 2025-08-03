@@ -5,7 +5,7 @@ module.exports = {
     config: {
         name: "animegirl",
         version: "1.4",
-        author: "SiAM",
+        author: "Arfan",
         countDown: 35,
         role: 0,
         shortDescription: {
