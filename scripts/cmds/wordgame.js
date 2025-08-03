@@ -4,7 +4,7 @@ module.exports = {
   config: {
     name: "wordgame",
     version: "1.0",
-    author: "Mahim",
+    author: "Arfan",
      role: 0,
     countdown: 10,
     reward: Math.floor(Math.random() * (100 - 50 + 1) + 50),
