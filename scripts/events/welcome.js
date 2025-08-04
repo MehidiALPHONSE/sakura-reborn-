@@ -112,35 +112,25 @@ module.exports = {
                         }
 
                         
-if (allowedGroups.includes(threadID)) {
-    api.sendMessage(form, threadID); 
-}
-delete global.temp.welcomeEvent[threadID];
-                    }
-                }
+const allowedGroups = JSON.parse(fs.readFileSync('groups.json'));
 
-              
-                const allowedGroups = JSON.parse(fs.readFileSync('groups.json'));
-                
-                    
 if (!allowedGroups.includes(threadID)) {
-    
-    const botUserID = dataAddedParticipants.find(item => item.userFbId == api.getCurrentUserID()).userFbId;
-    api.sendMessage({
-        body: getLang("approvalMessage"),
-        mentions: [
-            {
-                tag: "Admin",
-                id: botUserID
-            }
-        ]
-    }, threadID);
-    setTimeout(() => {
-        api.removeUserFromGroup(botUserID, threadID);
-    }, 20000);
-    return;
-}
+  const botUserID = api.getCurrentUserID();
+  const botInGroup = dataAddedParticipants.find(item => item.userFbId == botUserID);
 
+  if (botInGroup) {
+    api.sendMessage({
+      body: getLang("approvalMessage"),
+      mentions: [{ tag: "Admin", id: botUserID }]
+    }, threadID);
+
+    setTimeout(() => {
+      api.removeUserFromGroup(botUserID, threadID);
+    }, 20000);
+  }
+
+  return;
+}
                 
                 if (!welcomeEvent.joinTimeout) {
                     welcomeEvent.joinTimeout = setTimeout(async function () {
