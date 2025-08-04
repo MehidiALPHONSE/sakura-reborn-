@@ -33,7 +33,7 @@ module.exports = {
             multiple1: "you",
             multiple2: "you guys",
             defaultWelcomeMessage: `thank you for adding me again\nhave a nice chat 😊`,
-            approvalMessage: "Hi, I'm Sakura~. Thanks for adding me to the group\n\nBut you need approval to use the bot.\nPlease contact the admin \n\n💬 m.me/j/AbZvu24dqVbfD5Rj/\n\n I have to leave the chat now. Thank you!"
+            approvalMessage: "Hi, I'm Sakura~. Thanks for adding me to the group\n\nBut you need approval to use the bot.\nPlease contact the admin \n\n💬 https://m.me/j/AbZd6HddcyXHEFki//\n\n I have to leave the chat now. Thank you!"
         }
     },
 
