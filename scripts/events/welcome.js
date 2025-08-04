@@ -7,8 +7,8 @@ if (!global.temp.welcomeEvent)
 module.exports = {
     config: {
         name: "welcome",
-        version: "1.5-fixed",
-        author: "NTKhang & Modified by Arfan",
+        version: "1.6",
+        author: "Ntkhang modified By Arfan",
         category: "events"
     },
 
@@ -26,7 +26,7 @@ module.exports = {
         }
     },
 
-    onStart: async ({ threadsData, message, event, api, getLang }) => {
+    onStart: async ({ threadsData, event, api, getLang }) => {
         if (event.logMessageType !== "log:subscribe") return;
 
         const hours = getTime("HH");
@@ -37,8 +37,7 @@ module.exports = {
         if (!global.temp.welcomeEvent[threadID]) {
             global.temp.welcomeEvent[threadID] = {
                 joinTimeout: null,
-                dataAddedParticipants: [],
-                botAdded: false
+                dataAddedParticipants: []
             };
         }
 
@@ -46,7 +45,7 @@ module.exports = {
         const threadData = await threadsData.get(threadID);
         const allowedGroups = JSON.parse(fs.readFileSync('groups.json', 'utf-8'));
 
-        // Bot added
+        // Bot added => check approval & remove if not approved
         if (dataAddedParticipants.some(item => item.userFbId == botUserID)) {
             if (!allowedGroups.includes(threadID)) {
                 api.sendMessage(getLang("approvalMessage"), threadID);
@@ -56,20 +55,10 @@ module.exports = {
             } else {
                 api.sendMessage(getLang("defaultWelcomeMessage"), threadID);
             }
-
-            // Removed nickname change code here!
-
             return;
         }
 
-        // New user(s) added to unapproved group
-        if (!allowedGroups.includes(threadID)) {
-            api.sendMessage(getLang("approvalMessage"), threadID);
-            return setTimeout(() => {
-                api.removeUserFromGroup(botUserID, threadID);
-            }, 20 * 1000);
-        }
-
+        // New user(s) added — no approval check here
         const newUsers = dataAddedParticipants.filter(u => u.userFbId !== botUserID);
         if (newUsers.length === 0) return;
 
