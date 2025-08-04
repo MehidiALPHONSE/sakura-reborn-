@@ -58,7 +58,7 @@ module.exports = {
         if (!dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
             if (!welcomeEvent.botAdded) {
                 welcomeEvent.botAdded = true;
-                api.sendMessage(getLang("welcomeMessage", prefix), threadID);
+                api.sendMessage(getLang("defaultWelcomeMessage"), threadID);
             }
         } else {
             const botUserID = api.getCurrentUserID();
