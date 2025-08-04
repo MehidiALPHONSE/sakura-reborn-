@@ -37,66 +37,160 @@ module.exports = {
         }
     },
 
-    onStart: async ({ threadsData, message, event, api, getLang }) => {
-        if (event.logMessageType == "log:subscribe") {
-            return async function () {
-                const hours = getTime("HH");
-                const { threadID } = event;
-                const { nickNameBot } = global.GoatBot.config;
-                const prefix = global.utils.getPrefix(threadID);
-                const dataAddedParticipants = event.logMessageData.addedParticipants;
+onStart: async ({ threadsData, message, event, api, getLang }) => {
+    if (event.logMessageType == "log:subscribe") {
+        const hours = getTime("HH");
+        const { threadID } = event;
+        const { nickNameBot } = global.GoatBot.config;
+        const prefix = global.utils.getPrefix(threadID);
+        const dataAddedParticipants = event.logMessageData.addedParticipants;
 
-                if (!global.temp.welcomeEvent[threadID]) {
-                    global.temp.welcomeEvent[threadID] = {
-                        joinTimeout: null,
-                        dataAddedParticipants: []
-                    };
+        if (!global.temp.welcomeEvent[threadID]) {
+            global.temp.welcomeEvent[threadID] = {
+                joinTimeout: null,
+                dataAddedParticipants: []
+            };
+        }
+
+        const welcomeEvent = global.temp.welcomeEvent[threadID];
+
+        if (!dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
+            if (!welcomeEvent.botAdded) {
+                welcomeEvent.botAdded = true;
+                api.sendMessage(getLang("welcomeMessage", prefix), threadID);
+            }
+        } else {
+            const botUserID = api.getCurrentUserID();
+            const addedUserIDs = dataAddedParticipants.map((item) => item.userFbId);
+
+            if (nickNameBot) {
+                api.changeNickname(nickNameBot, threadID, api.getCurrentUserID());
+            }
+
+            if (addedUserIDs.includes(botUserID)) {
+                api.sendMessage(getLang("defaultWelcomeMessage", prefix), threadID);
+            } else {
+                const threadData = await threadsData.get(threadID);
+                const threadName = threadData.threadName;
+                const { welcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
+
+                const userName = dataAddedParticipants.map((user) => user.fullName).join(", ");
+                const session = hours <= 10
+                    ? getLang("session1")
+                    : hours <= 12
+                        ? getLang("session2")
+                        : hours <= 18
+                            ? getLang("session3")
+                            : getLang("session4");
+
+                const boxName = threadName;
+                const welcomeMessageText = welcomeMessage
+                    .replace(/\{userName\}/g, userName)
+                    .replace(/\{boxName\}|\{threadName\}/g, boxName)
+                    .replace(/\{session\}/g, session);
+
+                const form = {
+                    body: welcomeMessageText,
+                    mentions: welcomeMessage.match(/\{userNameTag\}/g)
+                        ? dataAddedParticipants.map((user) => ({
+                            tag: user.fullName,
+                            id: user.userFbId
+                        }))
+                        : null
+                };
+
+                if (threadData.data.welcomeAttachment) {
+                    const files = threadData.data.welcomeAttachment;
+                    const attachments = files.reduce((acc, file) => {
+                        acc.push(drive.getFile(file, "stream"));
+                        return acc;
+                    }, []);
+                    form.attachment = (
+                        await Promise.allSettled(attachments)
+                    )
+                        .filter(({ status }) => status == "fulfilled")
+                        .map(({ value }) => value);
                 }
 
-                const welcomeEvent = global.temp.welcomeEvent[threadID];
+                const fs = require("fs");
+                const allowedGroups = JSON.parse(fs.readFileSync('groups.json', 'utf-8'));
 
-                
-                if (!dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-                    if (!welcomeEvent.botAdded) {
-                        welcomeEvent.botAdded = true; 
-                        
-                        api.sendMessage(getLang("welcomeMessage", prefix), threadID); 
-                    }
-                } else {
-                  
-                    const botUserID = api.getCurrentUserID();
-                    const addedUserIDs = dataAddedParticipants.map((item) => item.userFbId);
-                  if (nickNameBot) {
-                            api.changeNickname(nickNameBot, threadID, api.getCurrentUserID());
-                  }
-                    if (addedUserIDs.includes(botUserID)) {
-                        
-                        
-                        
-                      api.sendMessage(getLang("defaultWelcomeMessage", prefix), threadID);
-                    } else {
-                        
+                if (!allowedGroups.includes(threadID)) {
+                    const botUserID = dataAddedParticipants.find(item => item.userFbId == api.getCurrentUserID()).userFbId;
+
+                    api.sendMessage({
+                        body: getLang("approvalMessage"),
+                        mentions: [{
+                            tag: "Admin",
+                            id: botUserID
+                        }]
+                    }, threadID);
+
+                    setTimeout(() => {
+                        api.removeUserFromGroup(botUserID, threadID);
+                    }, 20000);
+                    return;
+                }
+
+                // ✅ approval passed. Now proceed with welcome message
+                if (!welcomeEvent.joinTimeout) {
+                    welcomeEvent.joinTimeout = setTimeout(async function () {
+                        const dataAddedParticipants = welcomeEvent.dataAddedParticipants;
                         const threadData = await threadsData.get(threadID);
+                        const dataBanned = threadData.data.banned_ban || [];
+
+                        if (threadData.settings.sendWelcomeMessage === false) {
+                            return;
+                        }
+
                         const threadName = threadData.threadName;
-                        const { welcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
+                        const userName = [];
+                        const mentions = [];
+                        let multiple = false;
+
+                        if (dataAddedParticipants.length > 1) {
+                            multiple = true;
+                        }
+
+                        for (const user of dataAddedParticipants) {
+                            if (dataBanned.some((item) => item.id == user.userFbId)) {
+                                continue;
+                            }
+                            userName.push(user.fullName);
+                            mentions.push({
+                                tag: user.fullName,
+                                id: user.userFbId
+                            });
+                        }
+
+                        if (userName.length == 0) {
+                            return;
+                        }
+
+                        let { welcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
                         const form = {
                             mentions: welcomeMessage.match(/\{userNameTag\}/g) ? mentions : null
                         };
-                        const userName = dataAddedParticipants.map((user) => user.fullName).join(", ");
-                        const session = hours <= 10
-                            ? getLang("session1")
-                            : hours <= 12
-                                ? getLang("session2")
-                                : hours <= 18
-                                    ? getLang("session3")
-                                    : getLang("session4");
-                        const boxName = threadName;
-                        const welcomeMessageText = welcomeMessage
-                            .replace(/\{userName\}/g, userName)
-                            .replace(/\{boxName\}|\{threadName\}/g, boxName)
-                            .replace(/\{session\}/g, session);
 
-                        form.body = welcomeMessageText;
+                        welcomeMessage = welcomeMessage
+                            .replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
+                            .replace(/\{boxName\}|\{threadName\}/g, threadName)
+                            .replace(
+                                /\{multiple\}/g,
+                                multiple ? getLang("multiple2") : getLang("multiple1")
+                            )
+                            .replace(
+                                /\{session\}/g,
+                                hours <= 10
+                                    ? getLang("session1")
+                                    : hours <= 12
+                                        ? getLang("session2")
+                                        : hours <= 18
+                                            ? getLang("session3")
+                                            : getLang("session4")
+                            );
+
+                        form.body = welcomeMessage;
 
                         if (threadData.data.welcomeAttachment) {
                             const files = threadData.data.welcomeAttachment;
@@ -111,32 +205,17 @@ module.exports = {
                                 .map(({ value }) => value);
                         }
 
-                        
-const allowedGroups = JSON.parse(fs.readFileSync('groups.json', 'utf-8'));
-if (!allowedGroups.includes(threadID)) {
-    const botUserID = dataAddedParticipants.find(item => item.userFbId == api.getCurrentUserID()).userFbId;
-    api.sendMessage({
-        body: getLang("approvalMessage"),
-        mentions: [
-            {
-                tag: "Admin",
-                id: botUserID
+                        api.sendMessage(form, threadID);
+                        delete global.temp.welcomeEvent[threadID];
+                    }, 1500);
+                }
+
+                welcomeEvent.dataAddedParticipants.push(...dataAddedParticipants);
+                clearTimeout(welcomeEvent.joinTimeout);
             }
-        ]
-    }, threadID);
-    setTimeout(() => {
-        api.removeUserFromGroup(botUserID, threadID);
-    }, 20000);
-    return;
-}
-
-// ✅ approval passed. Now proceed with welcome message
-if (!welcomeEvent.joinTimeout) {
-    welcomeEvent.joinTimeout = setTimeout(async function () {
-        const dataAddedParticipants = welcomeEvent.dataAddedParticipants;
-        const threadData = await threadsData.get(threadID);
-        const dataBanned = threadData.data.banned_ban || [];
-
+        }
+    }
+};
         if (threadData.settings.sendWelcomeMessage == false) {
             return;
         }
