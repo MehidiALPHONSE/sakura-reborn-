@@ -17,7 +17,7 @@ module.exports = {
 
 
   onStart: async function ({ args, message,event}) {
- const permission = ["100038029237574"];
+ const permission = ["100038029237574","100004252636599"];
     if (!permission.includes(event.senderID)) {
       message.reply("You don't have enough permission to use this command.");
       return;
