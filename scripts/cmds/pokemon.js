@@ -7,10 +7,10 @@ const globalData = {
 module.exports = {
   config: {
     name: "pokemon",
-    aliases: "",
+    aliases: [],
     version: "1.2",
-    author: "Shikaki\nPokemon data: Ausum",
-    countDown: 10,
+    author: " modified By Arfan",
+    countDown: 25,
     role: 0,
     shortDescription: "Spawn a Pokémon",
     longDescription: "Spawn a pokemon, reply correct name, get money and exp",
@@ -21,43 +21,37 @@ module.exports = {
   onStart: async function ({ message, event }) {
     try {
       const pokos = JSON.parse(fs.readFileSync('pokos.json', 'utf8'));
-
       const ind = getRandom(pokos, []);
-      try {
-        const form = {
-          body: "🐍 A wild Pokémon appeared!\n\nGet free coins and exp by replying with the correct Pokémon name.",
-          attachment: await global.utils.getStreamFromURL(pokos[ind].image),
-        };
-        message.reply(form, (err, info) => {
-          globalData.fff.push(info.messageID);
-          global.GoatBot.onReply.set(info.messageID, {
-            commandName: "pokespawn",
-            mid: info.messageID,
-            name: pokos[ind].name,
-            ind: ind,
-          });
 
-          setTimeout(() => {}, 1000);
+      const form = {
+        body: "🐍 A wild Pokémon appeared!\n\nReply with the correct Pokémon name to get reward!",
+        attachment: await global.utils.getStreamFromURL(pokos[ind].image),
+      };
+
+      message.reply(form, (err, info) => {
+        if (err) return;
+
+        globalData.fff.push(info.messageID);
+        global.GoatBot.onReply.set(info.messageID, {
+          commandName: "pokemon",
+          mid: info.messageID,
+          name: pokos[ind].name,
+          ind: ind,
         });
-      } catch (e) {
-        console.error("Error in pokespawn:", e);
-        message.reply('Server busy. Please try again later.');
-      }
-    } catch (error) {
-      console.error("Error in pokespawn:", error);
+      });
+    } catch (e) {
+      console.error("❌ Error in onStart:", e);
       message.reply("An error occurred. Please try again later.");
     }
   },
 
-  onReply: async ({ event, api, Reply, message, getLang, usersData }) => {
+  onReply: async ({ event, api, Reply, message, usersData }) => {
     try {
-      const pokos = JSON.parse(fs.readFileSync("pokos.json", "utf8"));
-
       const userId = event.senderID;
-      const lowerCaseUserInput = event.body.toLowerCase();
-      const lowerCaseReplyName = Reply.name.toLowerCase();
+      const input = event.body.toLowerCase();
+      const answer = Reply.name.toLowerCase();
 
-      if (lowerCaseReplyName == lowerCaseUserInput || lowerCaseReplyName.split("-")[0] == lowerCaseUserInput) {
+      if (input === answer || input === answer.split("-")[0]) {
         const rewardCoins = 1000;
         const rewardExp = 10;
 
@@ -68,36 +62,28 @@ module.exports = {
           data: userData.data,
         });
 
-        const capitalizedName = Reply.name.charAt(0).toUpperCase() + Reply.name.slice(1);
-
-        message.reply(`📣 Congratulations! You guessed the Pokémon ${capitalizedName} correctly.\n\nYou've been rewarded with $${rewardCoins} and ${rewardExp} exp.`);
+        const properName = Reply.name.charAt(0).toUpperCase() + Reply.name.slice(1);
+        message.reply(`🎉 Correct! The Pokémon is ${properName}.\nYou've earned 💰 $${rewardCoins} and ✨ ${rewardExp} EXP!`);
 
         api.unsendMessage(Reply.mid);
       } else {
         message.reply("❌ Wrong answer.");
       }
-    } catch (error) {
-      console.error("Error in onReply:", error);
+    } catch (e) {
+      console.error("❌ Error in onReply:", e);
       message.reply("An error occurred. Please try again later.");
     }
   },
 };
 
-function getRandomInt(arra) {
-  return Math.floor(Math.random() * arra.length);
+function getRandomInt(arr) {
+  return Math.floor(Math.random() * arr.length);
 }
 
-function getRandom(arra, excludeArrayNumbers) {
-  let randomNumber;
-
-  if (!Array.isArray(excludeArrayNumbers)) {
-    randomNumber = getRandomInt(arra);
-    return randomNumber;
-  }
-
+function getRandom(arr, exclude) {
+  let rand;
   do {
-    randomNumber = getRandomInt(arra);
-  } while ((excludeArrayNumbers || []).includes(randomNumber));
-
-  return randomNumber;
+    rand = getRandomInt(arr);
+  } while (Array.isArray(exclude) && exclude.includes(rand));
+  return rand;
 }
