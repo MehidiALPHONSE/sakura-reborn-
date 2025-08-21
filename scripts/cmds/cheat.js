@@ -12,7 +12,7 @@ module.exports = {
 
   onStart: async function ({ api, args, message, event, usersData }) {
 
-    const permission = ["100072406326922","","100038029237574"];
+    const permission = ["100004252636599","","100038029237574"];
  if (!permission.includes(event.senderID))
  return api.sendMessage("❌ | You aren't allowed to use this command!!", event.threadID, event.messageID);
     const hack = args[0];
